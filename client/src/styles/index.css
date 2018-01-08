@@ -1,32 +1,42 @@
-.layout-container .app-bar {
-  width: 100%; }
-  .layout-container .app-bar .app-title {
-    flex: 1 !important; }
-.layout-container .progress-side-bar-container {
-  width: 25%;
-  position: fixed;
-  bottom: 0px;
-  top: 64px;
-  border-right: 1px solid lightgrey; }
-  .layout-container .progress-side-bar-container .heading {
-    font-size: 0.9375rem;
-    font-weight: normal; }
-  .layout-container .progress-side-bar-container .expansion-panel-details {
-    padding-top: 0px;
-    padding-bottom: 0px; }
-  .layout-container .progress-side-bar-container .expansion-panel-summary {
-    min-height: 45px; }
-  .layout-container .progress-side-bar-container .MuiExpansionPanelSummary-contentExpanded-94 {
-    margin: 0 0; }
-  .layout-container .progress-side-bar-container .MuiExpansionPanel-expanded-87 {
-    margin: 0 0; }
-  .layout-container .progress-side-bar-container .list-of-sub-levels-container {
-    width: 100%; }
-    .layout-container .progress-side-bar-container .list-of-sub-levels-container .list-item {
-      padding-top: 5px;
-      padding-bottom: 5px; }
+html {
+  height: 100% !important; }
+  html body {
+    height: 100%;
+    margin: 0; }
+    html body #root {
+      height: 100%; }
 
-body {
-  margin: 0; }
+.app {
+  height: 100%; }
+
+.layout-container {
+  height: 100%; }
+  .layout-container .app-bar {
+    width: 100%; }
+    .layout-container .app-bar .app-title {
+      flex: 1 !important; }
+  .layout-container .progress-side-bar-container {
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    margin-top: 64px;
+    border-right: 1px solid lightgrey; }
+    .layout-container .progress-side-bar-container .heading {
+      font-size: 0.9375rem;
+      font-weight: normal; }
+    .layout-container .progress-side-bar-container .expansion-panel-details {
+      padding-top: 0px;
+      padding-bottom: 0px; }
+    .layout-container .progress-side-bar-container .expansion-panel-summary {
+      min-height: 45px; }
+    .layout-container .progress-side-bar-container .MuiExpansionPanelSummary-contentExpanded-94 {
+      margin: 0 0; }
+    .layout-container .progress-side-bar-container .MuiExpansionPanel-expanded-87 {
+      margin: 0 0; }
+    .layout-container .progress-side-bar-container .list-of-sub-levels-container {
+      width: 100%; }
+      .layout-container .progress-side-bar-container .list-of-sub-levels-container .list-item {
+        padding-top: 5px;
+        padding-bottom: 5px; }
 
 /*# sourceMappingURL=index.css.map */

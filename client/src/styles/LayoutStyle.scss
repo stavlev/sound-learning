@@ -1,49 +1,50 @@
-.layout-container {
+.layout {
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
-  .app-bar {
-    width: 100%;
-
-    .app-title {
-      flex: 1 !important;
-    }
-  }
-
-  .progress-side-bar-container {
-    position: absolute;
+  .layout-container {
     height: 100%;
-    width: 25%;
+    display: flex;
     margin-top: 64px;
-    border-right: 1px solid lightgrey;
+    flex-direction: row;
 
-    .heading {
-      font-size: 0.9375rem;
-      font-weight: normal;
+    .layout-content {
+      flex-grow: 1;
     }
 
-    .expansion-panel-details {
-      padding-top: 0px;
-      padding-bottom: 0px;
-    }
+    .progress-side-bar-container {
+      border-right: 1px solid lightgrey;
 
-    .expansion-panel-summary {
-      min-height: 45px;
-    }
+      .heading {
+        font-size: 0.9375rem;
+        font-weight: normal;
+      }
 
-    .MuiExpansionPanelSummary-contentExpanded-94 {
-      margin: 0 0;
-    }
+      .expansion-panel-details {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
 
-    .MuiExpansionPanel-expanded-87 {
-      margin: 0 0;
-    }
+      .expansion-panel-summary {
+        min-height: 45px;
+      }
 
-    .list-of-sub-levels-container {
-      width: 100%;
+      .MuiExpansionPanelSummary-contentExpanded-94 {
+        margin: 0 0;
+      }
 
-      .list-item {
-        padding-top: 5px;
-        padding-bottom: 5px;
+      .MuiExpansionPanel-expanded-87 {
+        margin: 0 0;
+      }
+
+      .list-of-sub-levels-container {
+        width: 100%;
+
+        .list-item {
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
       }
     }
   }

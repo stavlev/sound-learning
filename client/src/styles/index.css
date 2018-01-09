@@ -45,11 +45,11 @@ html {
   width: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-shrink: 0; }
+  justify-content: center; }
 .pitch-sort-game .pitch-component-list {
   display: flex;
   justify-content: space-evenly;
-  align-items: center; }
+  align-items: center;
+  margin-top: 50px; }
 
 /*# sourceMappingURL=index.css.map */

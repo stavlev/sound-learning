@@ -1,20 +1,21 @@
 import React from 'react';
 import PitchComponent from "./PitchComponent";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import {Typography} from "material-ui";
 
 const SortableItem = SortableElement(({value}) =>
-    <li>
-        <PitchComponent frequency={value}/>
-    </li>
+    <PitchComponent frequency={value}/>
 );
 
 const SortableList = SortableContainer(({items}) => {
     return (
-        <ul className="pitch-component-list">
-            {items.map((value, index) => (
-                <SortableItem key={`item-${index}`} index={index} value={value}/>
-            ))}
-        </ul>
+        <div className="pitch-component-list">
+            {
+                items.map((index, value) => (
+                    <SortableItem key={index} index={value} value={index} sortIndex={index}/>
+                ))
+            }
+        </div>
     );
 });
 
@@ -31,8 +32,18 @@ export default class PitchSortGame extends React.Component {
 
     render() {
         return (
-            <div className="pitch-sort-game">
-                <SortableList items={this.state.frequencies} onSortEnd={this.onSortEnd}/>
+            <div>
+                <Typography type="title" gutterBottom>
+                    Sort the given sounds according to their frequency
+                </Typography>
+                <Typography type="subheading" gutterBottom>
+                    Click each button to play/stop the sound.
+                    Take as much time as you need to distinguish the different frequencies :)
+                </Typography>
+                <div className="pitch-sort-game">
+                    <SortableList items={this.state.frequencies} onSortEnd={this.onSortEnd}
+                                  axis="x" lock-axis="x"/>
+                </div>
             </div>
         )
     }

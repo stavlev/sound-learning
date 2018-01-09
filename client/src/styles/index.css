@@ -13,6 +13,8 @@ html {
   height: 100%;
   display: flex;
   flex-direction: column; }
+  .layout .app-title {
+    flex: 1; }
   .layout .layout-container {
     height: 100%;
     display: flex;

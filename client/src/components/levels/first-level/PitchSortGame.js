@@ -2,6 +2,7 @@ import React from 'react';
 import PitchComponent from "./PitchComponent";
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 import {Typography} from "material-ui";
+import shuffle from 'shuffle-array';
 
 const SortableItem = SortableElement(({value}) =>
     <PitchComponent frequency={value}/>
@@ -21,13 +22,35 @@ const SortableList = SortableContainer(({items}) => {
 
 export default class PitchSortGame extends React.Component {
     state = {
-        frequencies: [440, 540, 640, 740, 840],
+        frequencies: shuffle([340, 440, 540, 640, 740, 840]),
     };
 
     onSortEnd = ({oldIndex, newIndex}) => {
         this.setState({
             frequencies: arrayMove(this.state.frequencies, oldIndex, newIndex),
-        });
+        }, () => this.calculateGameResult());
+    };
+
+    calculateGameResult = () => {
+        let areFrequenciesSorted = this.isArraySorted(this.state.frequencies);
+
+        if (areFrequenciesSorted)
+        {
+            alert("Great! You nailed it :)");
+        }
+    };
+
+    isArraySorted = (arr) => {
+        let sorted = true;
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i+1]) {
+                sorted = false;
+                break;
+            }
+        }
+
+        return sorted;
     };
 
     render() {

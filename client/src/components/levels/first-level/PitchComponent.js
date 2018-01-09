@@ -12,10 +12,10 @@ export default class PitchComponent extends React.Component {
         const oscillatorNode = audioCtx.createOscillator();
 
         oscillatorNode.type = 'square';
-        oscillatorNode.frequency.setValueAtTime(/*this.state.frequency*/ 440, audioCtx.currentTime); // value in hertz
+        oscillatorNode.frequency.setValueAtTime(this.props.frequency, audioCtx.currentTime); // value in hertz
         oscillatorNode.start();
 
-        this.state = {isPlaying: false, frequency: 440, oscillatorNode: oscillatorNode, audioCtx: audioCtx};
+        this.state = {isPlaying: false, frequency: this.props.frequency, oscillatorNode: oscillatorNode, audioCtx: audioCtx};
     }
 
     handleClick = () => {

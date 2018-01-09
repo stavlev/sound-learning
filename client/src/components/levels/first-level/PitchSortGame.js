@@ -5,7 +5,7 @@ export default class PitchSortGame extends React.Component {
     render() {
         return (
             <div className="pitch-sort-game">
-                <PitchComponent/>
+                <PitchComponent frequency={440}/>
             </div>
         )
     }

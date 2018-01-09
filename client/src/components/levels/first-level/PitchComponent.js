@@ -1,4 +1,6 @@
 import React from 'react';
+import {Paper, Button} from 'material-ui';
+import {PlayArrow, Stop} from "material-ui-icons";
 
 export default class PitchComponent extends React.Component {
     constructor(props) {
@@ -31,9 +33,16 @@ export default class PitchComponent extends React.Component {
 
     render() {
         return (
-            <button className="pitch" onClick={() => this.handleClick()}>
-                {this.state.isPlaying ? 'Stop' : 'Play'}
-            </button>
+            <div>
+                <Paper className="pitch-paper" elevation={4}>
+                    <Button fab color="primary" aria-label="add" className="pitch-button"
+                            onClick={() => this.handleClick()}>
+                        {
+                            this.state.isPlaying ? <Stop/> : <PlayArrow/>
+                        }
+                    </Button>
+                </Paper>
+            </div>
         );
     }
 }

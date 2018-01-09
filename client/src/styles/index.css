@@ -40,4 +40,11 @@ html {
           padding-top: 5px;
           padding-bottom: 5px; }
 
+.pitch-sort-game .pitch-paper {
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 /*# sourceMappingURL=index.css.map */

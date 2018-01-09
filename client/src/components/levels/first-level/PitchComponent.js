@@ -5,22 +5,27 @@ export default class PitchComponent extends React.Component {
         // create web audio api context
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        // create Oscillator node
-        const oscillator = audioCtx.createOscillator();
+        // create Oscillator and gain node
+        var oscillator = audioCtx.createOscillator();
+        var gainNode = audioCtx.createGain();
 
+        // connect oscillator to gain node to speakers
+        oscillator.connect(gainNode);
         oscillator.type = 'square';
         oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // value in hertz
-        oscillator.connect(audioCtx.destination);
-        oscillator.start();
-    }
+        //oscillator.frequency.value = 440;
+        gainNode.connect(audioCtx.destination);
 
-    render() {
-        return (
-        <button className="pitch" onClick={() => this.playPitch}>
-            PLAY
+        oscillator.start(0);
+    }
+}
+
+render()
+{
+    return (
+        <button className="pitch" onClick={this.playPitch}>
+            Play
         </button>
-        )
-    }
-
-
+    );
+}
 }

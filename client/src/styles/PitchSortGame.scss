@@ -6,4 +6,10 @@
     align-items: center;
     justify-content: center;
   }
+
+  .pitch-component-list {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 }

@@ -1,31 +1,39 @@
 import React from 'react';
 
 export default class PitchComponent extends React.Component {
-    playPitch = () => {
+    constructor(props) {
+        super(props);
+
         // create web audio api context
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-        // create Oscillator and gain node
-        var oscillator = audioCtx.createOscillator();
-        var gainNode = audioCtx.createGain();
+        const oscillatorNode = audioCtx.createOscillator();
 
-        // connect oscillator to gain node to speakers
-        oscillator.connect(gainNode);
-        oscillator.type = 'square';
-        oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // value in hertz
-        //oscillator.frequency.value = 440;
-        gainNode.connect(audioCtx.destination);
+        oscillatorNode.type = 'square';
+        oscillatorNode.frequency.setValueAtTime(/*this.state.frequency*/ 440, audioCtx.currentTime); // value in hertz
+        oscillatorNode.start();
 
-        oscillator.start(0);
+        this.state = {isPlaying: false, frequency: 440, oscillatorNode: oscillatorNode, audioCtx: audioCtx};
     }
-}
 
-render()
-{
-    return (
-        <button className="pitch" onClick={this.playPitch}>
-            Play
-        </button>
-    );
-}
+    handleClick = () => {
+        this.setState({isPlaying: !this.state.isPlaying}, () => this.handlePlay())
+    };
+
+    handlePlay = () => {
+        if (!this.state.isPlaying) {
+            this.state.oscillatorNode.disconnect(this.state.audioCtx.destination);
+        }
+        else {
+            this.state.oscillatorNode.connect(this.state.audioCtx.destination);
+        }
+    }
+
+    render() {
+        return (
+            <button className="pitch" onClick={() => this.handleClick()}>
+                {this.state.isPlaying ? 'Stop' : 'Play'}
+            </button>
+        );
+    }
 }

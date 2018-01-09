@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
 
+  .app-title {
+    flex: 1;
+  }
+
   .layout-container {
     height: 100%;
     display: flex;

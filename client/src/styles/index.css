@@ -46,14 +46,15 @@ html {
   height: 100%;
   display: flex; }
   .pitch-sort-game-container .pitch-sort-game-paper {
-    height: 70%;
+    height: 500px;
     margin: auto;
     padding: 30px; }
     .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game {
       padding: 70px;
       margin-top: 40px;
       text-align: center;
-      border: dashed lightgrey 1px; }
+      border: dashed lightgrey 1px;
+      cursor: pointer; }
       .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game .pitch-component-list {
         display: flex;
         justify-content: space-evenly;

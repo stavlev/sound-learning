@@ -6,16 +6,13 @@ export default class PitchComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        // create web audio api context
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        const oscillatorNode = audioCtx.createOscillator();
+        const oscillatorNode = this.props.audioCtx.createOscillator();
 
         oscillatorNode.type = 'square';
-        oscillatorNode.frequency.setValueAtTime(this.props.frequency, audioCtx.currentTime); // value in hertz
+        oscillatorNode.frequency.setValueAtTime(this.props.frequency, this.props.audioCtx.currentTime); // value in hertz
         oscillatorNode.start();
 
-        this.state = {isPlaying: false, frequency: this.props.frequency, oscillatorNode: oscillatorNode, audioCtx: audioCtx};
+        this.state = {isPlaying: false, frequency: this.props.frequency, oscillatorNode: oscillatorNode};
     }
 
     handleClick = () => {
@@ -24,10 +21,10 @@ export default class PitchComponent extends React.Component {
 
     handlePlay = () => {
         if (!this.state.isPlaying) {
-            this.state.oscillatorNode.disconnect(this.state.audioCtx.destination);
+            this.state.oscillatorNode.disconnect(this.props.audioCtx.destination);
         }
         else {
-            this.state.oscillatorNode.connect(this.state.audioCtx.destination);
+            this.state.oscillatorNode.connect(this.props.audioCtx.destination);
         }
     }
 

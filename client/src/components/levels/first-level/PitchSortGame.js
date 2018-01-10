@@ -6,16 +6,17 @@ import shuffle from 'shuffle-array';
 
 const randomMaterialColor = require('random-material-color');
 
-const SortableItem = SortableElement(({value, color}) =>
-    <PitchComponent frequency={value} color={color} />
+const SortableItem = SortableElement(({audioCtx, value, color}) =>
+    <PitchComponent frequency={value} color={color} audioCtx={audioCtx}/>
 );
 
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({audioCtx, items}) => {
     return (
         <div className="pitch-component-list">
             {
                 items.map(({frequency, color}, index) => (
-                    <SortableItem key={frequency} index={index} value={frequency} color={color} sortIndex={frequency}/>
+                    <SortableItem key={frequency} index={index} value={frequency} color={color} sortIndex={frequency}
+                                  audioCtx={audioCtx}/>
                 ))
             }
         </div>
@@ -23,15 +24,24 @@ const SortableList = SortableContainer(({items}) => {
 });
 
 export default class PitchSortGame extends React.Component {
-    state = {
-        frequencies: shuffle([{frequency: 340, color: randomMaterialColor.getColor()},
-                              {frequency: 440, color: randomMaterialColor.getColor()},
-                              {frequency: 540, color: randomMaterialColor.getColor()},
-                              {frequency: 640, color: randomMaterialColor.getColor()},
-                              {frequency: 740, color: randomMaterialColor.getColor()},
-                              {frequency: 840, color: randomMaterialColor.getColor()}]),
-        isGameStarted: false,
-        isGameFinished: false,
+    constructor(props) {
+        super(props);
+
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        this.state = {
+            audioCtx: audioCtx,
+            frequencies: shuffle([
+                {frequency: 240, color: randomMaterialColor.getColor()},
+                {frequency: 340, color: randomMaterialColor.getColor()},
+                {frequency: 440, color: randomMaterialColor.getColor()},
+                {frequency: 540, color: randomMaterialColor.getColor()},
+                {frequency: 640, color: randomMaterialColor.getColor()},
+                {frequency: 740, color: randomMaterialColor.getColor()},
+                {frequency: 840, color: randomMaterialColor.getColor()}]),
+            isGameStarted: false,
+            isGameFinished: false,
+        };
     };
 
     startGame = () => {
@@ -60,7 +70,7 @@ export default class PitchSortGame extends React.Component {
         let sorted = true;
 
         for (let i = 0; i < arr.length - 1; i++) {
-            if (arr[i].frequency > arr[i+1].frequency) {
+            if (arr[i].frequency > arr[i + 1].frequency) {
                 sorted = false;
                 break;
             }
@@ -94,9 +104,9 @@ export default class PitchSortGame extends React.Component {
                                 <Typography type="display3" onClick={() => this.startGame()}>
                                     Start Game
                                 </Typography>
-                            : (this.state.isGameStarted && !this.state.isGameFinished) ?
-                                <SortableList items={this.state.frequencies} onSortEnd={this.onSortEnd}
-                                              axis="x" />
+                                : (this.state.isGameStarted && !this.state.isGameFinished) ?
+                                <SortableList items={this.state.frequencies} onSortEnd={this.onSortEnd} axis="x"
+                                              audioCtx={this.state.audioCtx}/>
                                 :
                                 <Typography type="display3">
                                     Great! You nailed it :)
@@ -107,4 +117,4 @@ export default class PitchSortGame extends React.Component {
             </div>
         )
     }
-    }
+}

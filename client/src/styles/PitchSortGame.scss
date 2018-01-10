@@ -1,16 +1,41 @@
-.pitch-sort-game {
-  .pitch-paper {
-    height: 100px;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.pitch-sort-game-container {
+  height: 100%;
+  display: flex;
 
-  .pitch-component-list {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 50px;
+  .pitch-sort-game-paper {
+    height: 70%;
+    margin: auto;
+    padding: 30px;
+
+    .pitch-sort-game {
+      padding: 70px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+      cursor: pointer;
+
+      .pitch-component-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .pitch-paper {
+          height: 100px;
+          width: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
   }
+}
+
+.pitch-sort-game:hover {
+  color: azure;
+}
+
+.pitch-button {
+  margin: 22px !important;
+  border-radius: 0% !important;
 }

@@ -35,7 +35,7 @@ export default class PitchComponent extends React.Component {
         return (
             <div>
                 <Paper className="pitch-paper" elevation={4}>
-                    <Button fab color="primary" aria-label="add" className="pitch-button"
+                    <Button fab style={{backgroundColor: this.props.color}} aria-label="add" className="pitch-button"
                             onClick={() => this.handleClick()}>
                         {
                             this.state.isPlaying ? <Stop/> : <PlayArrow/>

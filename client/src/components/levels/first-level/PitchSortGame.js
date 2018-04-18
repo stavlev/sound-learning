@@ -1,85 +1,56 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import PitchComponent from './PitchComponent';
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
+import {arrayMove, SortableContainer, SortableElement} from 'react-sortable-hoc';
 import {Typography, Paper} from 'material-ui';
-import shuffle from 'shuffle-array';
+import {startGame,
+        onSortEnd,
+        finishSortGame} from "./actionCreators";
 
-const randomMaterialColor = require('random-material-color');
-
-const SortableItem = SortableElement(({audioCtx, value, color}) =>
-    <PitchComponent frequency={value} color={color} audioCtx={audioCtx}/>
+const SortableItem = SortableElement(({audioCtx, value, color, oscillatorNode, isPlaying, id, dispatch}) =>
+    <PitchComponent key={id}
+                    frequency={value}
+                    color={color}
+                    id={id}
+                    audioCtx={audioCtx}
+                    oscillatorNode={oscillatorNode}
+                    isPlaying={isPlaying}
+                    dispatch={dispatch}
+    />
 );
 
-const SortableList = SortableContainer(({audioCtx, items}) => {
+const SortableList = SortableContainer(({audioCtx, dispatch, items}) => {
     return (
         <div className="pitch-component-list">
             {
-                items.map(({frequency, color}, index) => (
-                    <SortableItem key={frequency} index={index} value={frequency} color={color} sortIndex={frequency}
-                                  audioCtx={audioCtx}/>
+                items.map(({frequency, color, isPlaying, oscillatorNode, id}, index) => (
+                    <SortableItem key={id}
+                                  index={index}
+                                  value={frequency}
+                                  id={id}
+                                  color={color}
+                                  sortIndex={frequency}
+                                  audioCtx={audioCtx}
+                                  oscillatorNode={oscillatorNode}
+                                  isPlaying={isPlaying}
+                                  dispatch={dispatch}
+                    />
                 ))
             }
         </div>
     );
 });
 
-export default class PitchSortGame extends React.Component {
+export class PitchSortGame extends React.Component {
     constructor(props) {
         super(props);
-
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-        this.state = {
-            audioCtx: audioCtx,
-            frequencies: shuffle([
-                {frequency: 240, color: randomMaterialColor.getColor()},
-                {frequency: 340, color: randomMaterialColor.getColor()},
-                {frequency: 440, color: randomMaterialColor.getColor()},
-                {frequency: 540, color: randomMaterialColor.getColor()},
-                {frequency: 640, color: randomMaterialColor.getColor()},
-                {frequency: 740, color: randomMaterialColor.getColor()},
-                {frequency: 840, color: randomMaterialColor.getColor()}]),
-            isGameStarted: false,
-            isGameFinished: false,
-        };
-    };
-
-    startGame = () => {
-        this.setState({
-            isGameStarted: true,
-        });
+        console.log(props);
     }
 
-    onSortEnd = ({oldIndex, newIndex}) => {
-        this.setState({
-            frequencies: arrayMove(this.state.frequencies, oldIndex, newIndex),
-        }, () => this.calculateGameResult());
-    };
-
-    calculateGameResult = () => {
-        let areFrequenciesSorted = this.isArraySorted(this.state.frequencies);
-
-        if (areFrequenciesSorted) {
-            this.setState({
-                isGameFinished: true,
-            });
-        }
-    };
-
-    isArraySorted = (arr) => {
-        let sorted = true;
-
-        for (let i = 0; i < arr.length - 1; i++) {
-            if (arr[i].frequency > arr[i + 1].frequency) {
-                sorted = false;
-                break;
-            }
-        }
-
-        return sorted;
-    };
-
     render() {
+        const {dispatch, audioCtx, frequencies, isGameStarted, isGameFinished} = this.props;
+
         return (
             <div className="pitch-sort-game-container">
                 <Paper className="pitch-sort-game-paper">
@@ -100,13 +71,28 @@ export default class PitchSortGame extends React.Component {
                     </Typography>
                     <div className="pitch-sort-game">
                         {
-                            !this.state.isGameStarted ?
-                                <Typography type="display3" onClick={() => this.startGame()}>
+                            !isGameStarted ?
+                                <Typography type="display3"
+                                            onClick={() => {
+                                                dispatch(startGame());
+                                            }}>
                                     Start Game
                                 </Typography>
-                                : (this.state.isGameStarted && !this.state.isGameFinished) ?
-                                <SortableList items={this.state.frequencies} onSortEnd={this.onSortEnd} axis="x"
-                                              audioCtx={this.state.audioCtx}/>
+                                : (isGameStarted && !isGameFinished) ?
+                                <SortableList items={frequencies}
+                                              axis="x"
+                                              audioCtx={audioCtx}
+                                              dispatch={dispatch}
+                                              onSortEnd={({oldIndex, newIndex}) => {
+                                                  const newFrequencies = arrayMove(frequencies, oldIndex, newIndex);
+                                                  dispatch(onSortEnd(newFrequencies));
+
+                                                  let areFrequenciesSorted = isArraySorted(newFrequencies);
+                                                  if (areFrequenciesSorted) {
+                                                      dispatch(finishSortGame());
+                                                  }
+                                              }}
+                                              />
                                 :
                                 <Typography type="display3">
                                     Great! You nailed it :)
@@ -118,3 +104,57 @@ export default class PitchSortGame extends React.Component {
         )
     }
 }
+
+const isArraySorted = (arr) => {
+    let sorted = true;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i].frequency > arr[i + 1].frequency) {
+            sorted = false;
+            break;
+        }
+    }
+
+    return sorted;
+};
+
+//
+// PitchSortGame.defaultProps = {
+//     audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
+//     frequencies: shuffle([
+//         {id: uuidV4(), frequency: 240, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 340, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 440, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 540, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 640, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 740, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
+//         {id: uuidV4(), frequency: 840, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}}
+//         ]),
+//     isGameStarted: false,
+//     isGameFinished: false
+// };
+
+PitchSortGame.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    audioCtx: PropTypes.object,
+    frequencies: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string,
+        isPlaying: PropTypes.bool,
+        color: PropTypes.string,
+        frequency: PropTypes.number,
+        oscillatorNode: PropTypes.object
+    })),
+    isGameStarted: PropTypes.bool,
+    isGameFinished: PropTypes.bool
+};
+
+const mapStateToProps = (state) => {
+    return {
+        audioCtx: state.sortGame.audioCtx,
+        frequencies: state.sortGame.frequencies,
+        isGameStarted: state.sortGame.isGameStarted,
+        isGameFinished: state.sortGame.isGameFinished
+    };
+};
+
+export default connect(mapStateToProps)(PitchSortGame);

@@ -5,15 +5,20 @@
   "dependencies": {
     "material-ui": "^1.0.0-beta.26",
     "material-ui-icons": "^1.0.0-beta.17",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
+    "ramda": "^0.25.0",
     "random-material-color": "^1.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.0.17",
     "react-sortable-hoc": "^0.6.8",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "sass": "^1.0.0-beta.4",
     "scss": "^0.2.4",
-    "shuffle-array": "^1.0.1"
+    "shuffle-array": "^1.0.1",
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,5 +26,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "sass": "sass --watch src/styles"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0"
   }
 }

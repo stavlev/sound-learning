@@ -11,8 +11,10 @@ import PitchSortGame from "../levels/first-level/PitchSortGame";
 import * as routes from '../../constants/routes';
 import SignInPage from '../../authentication/SignIn';
 import SignUpPage from '../../authentication/SignUp';
+import withAuthentication from "../../authentication/withAuthentication";
+import Navigation from "../../authentication/Navigation"
 
-export default class Layout extends React.Component {
+class Layout extends React.Component {
     render() {
         return (
             <Router>
@@ -23,9 +25,7 @@ export default class Layout extends React.Component {
                                 Sound App
                             </Typography>
                             <div>
-                                <Button color="contrast" component={Link} to={routes.SIGN_IN}>
-                                    Sign In
-                                </Button>
+                                <Navigation />
                             </div>
                         </Toolbar>
                     </AppBar>
@@ -43,3 +43,6 @@ export default class Layout extends React.Component {
         );
     }
 }
+
+
+export default withAuthentication(Layout);

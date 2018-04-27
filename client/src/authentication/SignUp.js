@@ -6,11 +6,13 @@ import {
 
 import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
-
+import { Button, TextField, Typography } from 'material-ui';
 
 const SignUpPage = ({ history }) =>
     <div>
-        <h1>SignUp</h1>
+        <Typography variant="display2" gutterBottom>
+            Sign Up
+        </Typography>
         <SignUpForm history={history}/>
     </div>
 
@@ -80,34 +82,47 @@ class SignUpForm extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <input
+                <TextField
+                    id="Full Name"
+                    label="Full Name"
+                    placeholder="Full Name"
+                    margin="normal"
                     value={username}
                     onChange={event => this.setState(byPropKey('username', event.target.value))}
-                    type="text"
-                    placeholder="Full Name"
                 />
-                <input
+                <br/>
+                <TextField
+                    id="Email Address"
+                    label="Email Address"
+                    placeholder="Email Addresse"
+                    margin="normal"
                     value={email}
                     onChange={event => this.setState(byPropKey('email', event.target.value))}
-                    type="text"
-                    placeholder="Email Address"
                 />
-                <input
+                <br/>
+                <TextField
+                    id="password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                    margin="normal"
                     value={passwordOne}
                     onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-                    type="password"
-                    placeholder="Password"
                 />
-                <input
+                <br/>
+                <TextField
+                    id="confirm-password-input"
+                    label="Confirm Password"
+                    type="password"
+                    autoComplete="current-password"
+                    margin="normal"
                     value={passwordTwo}
                     onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
-                    type="password"
-                    placeholder="Confirm Password"
                 />
-                <button disabled={isInvalid} type="submit">
+                <br/><br/>
+                <Button variant="raised" color="primary" disabled={isInvalid} type="submit">
                     Sign Up
-                </button>
-
+                </Button>
                 { error && <p>{error.message}</p> }
             </form>
         );
@@ -115,11 +130,11 @@ class SignUpForm extends Component {
 }
 
 const SignUpLink = () =>
-    <p>
+    <Typography variant="display2" gutterBottom>
         Don't have an account?
         {' '}
         <Link to={routes.SIGN_UP}>Sign Up</Link>
-    </p>
+    </Typography>
 
 export default withRouter(SignUpPage);
 

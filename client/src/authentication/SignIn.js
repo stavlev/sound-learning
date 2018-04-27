@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 import { SignUpLink } from './SignUp';
+import { Button, TextField, Typography } from 'material-ui';
 
 const SignInPage = ({ history }) =>
     <div>
-        <h1>SignIn</h1>
+        <Typography variant="display2" gutterBottom>
+            Sign In
+        </Typography>
         <SignInForm history={history} />
         <SignUpLink />
     </div>
@@ -64,22 +66,29 @@ class SignInForm extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <input
+                <TextField
+                    id="Email Address"
+                    label="Email Address"
+                    placeholder="Email Address"
+                    margin="normal"
                     value={email}
                     onChange={event => this.setState(byPropKey('email', event.target.value))}
-                    type="text"
-                    placeholder="Email Address"
                 />
-                <input
+                <br/>
+                <TextField
+                    id="password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                    margin="normal"
                     value={password}
                     onChange={event => this.setState(byPropKey('password', event.target.value))}
-                    type="password"
-                    placeholder="Password"
                 />
-                <button disabled={isInvalid} type="submit">
+                <br/><br/>
+                <Button variant="raised" color="primary" disabled={isInvalid} type="submit">
                     Sign In
-                </button>
-
+                </Button>
+                <br/>
                 { error && <p>{error.message}</p> }
             </form>
         );

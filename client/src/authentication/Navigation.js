@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from 'material-ui';
+import { Button, Typography } from 'material-ui';
 
 import SignOutButton from './SignOut';
 import * as routes from '../constants/routes';
@@ -17,7 +17,9 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = ({authUser}) =>
     <div className="accountSignIn">
-        <h5>Account: {authUser.email}</h5>
+        <Typography variant="display2" gutterBottom>
+            Account: {authUser.email}
+        </Typography>
         <SignOutButton />
     </div>
 

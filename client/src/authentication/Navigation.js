@@ -16,8 +16,8 @@ const Navigation = ({ authUser }) =>
     </div>
 
 const NavigationAuth = ({authUser}) =>
-    <div>
-        <h1>Account: {authUser.email}</h1>
+    <div className="accountSignIn">
+        <h5>Account: {authUser.email}</h5>
         <SignOutButton />
     </div>
 

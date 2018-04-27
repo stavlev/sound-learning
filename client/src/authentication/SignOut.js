@@ -1,13 +1,14 @@
 import React from 'react';
+import { Button } from 'material-ui';
 
 import { auth } from '../firebase';
 
 const SignOutButton = () =>
-    <button
+    <Button
+        color="contrast"
         type="button"
-        onClick={auth.doSignOut}
-    >
+        onClick={auth.doSignOut}>
         Sign Out
-    </button>
+    </Button>
 
 export default SignOutButton;

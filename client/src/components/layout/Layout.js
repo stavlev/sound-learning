@@ -7,7 +7,8 @@ import {
 import {AppBar, IconButton, Typography, Toolbar, Button} from 'material-ui';
 import Home from 'material-ui-icons/Home';
 import ProgressSideBar from './ProgressSideBar';
-import PitchSortGame from "../levels/first-level/PitchSortGame";
+import PitchSortGame from "../levels/sort-game/PitchSortGame";
+import MultiChoiceQuestionGame from "../levels/multi-choice-question-game/MultiChoiceQuestionGame";
 import * as routes from '../../constants/routes';
 import SignInPage from '../../authentication/SignIn';
 import SignUpPage from '../../authentication/SignUp';
@@ -33,7 +34,7 @@ class Layout extends React.Component {
                         <ProgressSideBar/>
                         <div>
                             <hr/>
-                            <Route exact path={routes.GAME} component={() => <PitchSortGame/>} />
+                            <Route exact path={routes.GAME} component={() => <MultiChoiceQuestionGame/>} />
                             <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
                             <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
                         </div>

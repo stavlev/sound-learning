@@ -1,0 +1,22 @@
+.multi-choice-question-game-container {
+  height: 100%;
+  display: flex;
+
+  .multi-choice-question-game-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+
+    .multi-choice-question-game {
+      padding: 70px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+      cursor: pointer;
+    }
+  }
+}
+
+.multi-choice-question-game:hover {
+  color: azure;
+}

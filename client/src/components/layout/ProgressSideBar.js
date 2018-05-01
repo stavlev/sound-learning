@@ -5,7 +5,7 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import {Lock, LockOpen} from 'material-ui-icons';
 import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconButton} from 'material-ui';
 import { Link, withRouter } from 'react-router-dom';
-import * as levels from '../../constants/levels';
+import {LEVELS as levels} from "../../constants/levels";
 
 class ProgressSideBar extends React.Component {
     render() {

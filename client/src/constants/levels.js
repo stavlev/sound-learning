@@ -1,6 +1,6 @@
 import * as routes from "./routes";
 
-export const levels = [
+export const LEVELS = [
     {
         key: 1,
         isEnabled: true,

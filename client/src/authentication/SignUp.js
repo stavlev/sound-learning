@@ -52,7 +52,7 @@ class SignUpForm extends Component {
                 db.doCreateUser(authUser.uid, username, email)
                     .then(() => {
                         this.setState(() => ({ ...INITIAL_STATE }));
-                        history.push(routes.GAME);
+                        history.push('/');
                     })
                     .catch(error => {
                         this.setState(byPropKey('error', error));
@@ -94,7 +94,7 @@ class SignUpForm extends Component {
                 <TextField
                     id="Email Address"
                     label="Email Address"
-                    placeholder="Email Addresse"
+                    placeholder="Email Address"
                     margin="normal"
                     value={email}
                     onChange={event => this.setState(byPropKey('email', event.target.value))}

@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { auth } from '../firebase';
-import * as routes from '../constants/routes';
-import { SignUpLink } from './SignUp';
-import { Button, TextField, Typography } from 'material-ui';
+import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
+import {auth} from '../firebase';
+import {SignUpLink} from './SignUp';
+import {Button, TextField, Typography} from 'material-ui';
 
-const SignInPage = ({ history }) =>
+const SignInPage = ({history}) =>
     <div>
         <Typography variant="display2" gutterBottom>
             Sign In
         </Typography>
-        <SignInForm history={history} />
-        <SignUpLink />
+        <SignInForm history={history}/>
+        <SignUpLink/>
     </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -28,23 +27,18 @@ class SignInForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { ...INITIAL_STATE };
+        this.state = {...INITIAL_STATE};
     }
 
     onSubmit = (event) => {
-        const {
-            email,
-            password,
-        } = this.state;
+        const {email, password} = this.state;
 
-        const {
-            history,
-        } = this.props;
+        const {history} = this.props;
 
         auth.doSignInWithEmailAndPassword(email, password)
             .then(() => {
-                this.setState(() => ({ ...INITIAL_STATE }));
-                history.push(routes.GAME);
+                this.setState(() => ({...INITIAL_STATE}));
+                history.push('/');
             })
             .catch(error => {
                 this.setState(byPropKey('error', error));
@@ -54,11 +48,7 @@ class SignInForm extends Component {
     }
 
     render() {
-        const {
-            email,
-            password,
-            error,
-        } = this.state;
+        const {email, password, error} = this.state;
 
         const isInvalid =
             password === '' ||
@@ -89,7 +79,7 @@ class SignInForm extends Component {
                     Sign In
                 </Button>
                 <br/>
-                { error && <p>{error.message}</p> }
+                {error && <p>{error.message}</p>}
             </form>
         );
     }
@@ -97,6 +87,4 @@ class SignInForm extends Component {
 
 export default withRouter(SignInPage);
 
-export {
-    SignInForm,
-};
+export {SignInForm};

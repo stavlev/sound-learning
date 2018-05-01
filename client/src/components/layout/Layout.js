@@ -33,10 +33,12 @@ class Layout extends React.Component {
                     <div className="layout-container">
                         <ProgressSideBar/>
                         <div>
-                            <hr/>
-                            <Route exact path={routes.GAME} component={() => <MultiChoiceQuestionGame/>} />
-                            <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-                            <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
+                            <Route exact path={routes.SIGN_IN} component={SignInPage} />
+                            <Route exact path={routes.SIGN_UP} component={SignUpPage} />
+                        </div>
+                        <div>
+                            <Route path={routes.PITCH_SORT_GAME} component={PitchSortGame}/>
+                            <Route path={routes.PITCH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame} />
                         </div>
                     </div>
                 </div>

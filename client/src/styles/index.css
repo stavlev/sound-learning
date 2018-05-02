@@ -73,4 +73,35 @@ html {
   margin: 22px !important;
   border-radius: 0% !important; }
 
+.memory-game-container {
+  height: 100%;
+  display: flex; }
+  .memory-game-container .memory-game-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px; }
+    .memory-game-container .memory-game-paper .memory-game {
+      padding: 70px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+      cursor: pointer; }
+      .memory-game-container .memory-game-paper .memory-game .memory-component-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center; }
+        .memory-game-container .memory-game-paper .memory-game .memory-component-list .memory-paper {
+          height: 100px;
+          width: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+
+.memory-game:hover {
+  color: azure; }
+
+.memory-button {
+  margin: 22px !important;
+  border-radius: 0% !important; }
+
 /*# sourceMappingURL=index.css.map */

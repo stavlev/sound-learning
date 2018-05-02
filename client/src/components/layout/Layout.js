@@ -14,6 +14,7 @@ import SignInPage from '../../authentication/SignIn';
 import SignUpPage from '../../authentication/SignUp';
 import withAuthentication from "../../authentication/withAuthentication";
 import Navigation from "../../authentication/Navigation"
+import MemoryGame from "../levels/memory-game/MemoryGame"
 
 class Layout extends React.Component {
     render() {

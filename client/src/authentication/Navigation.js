@@ -17,7 +17,7 @@ const Navigation = ({ authUser }) =>
 
 const NavigationAuth = ({authUser}) =>
     <div className="accountSignIn">
-        <Typography variant="display2" gutterBottom>
+        <Typography gutterBottom>
             Account: {authUser.email}
         </Typography>
         <SignOutButton />

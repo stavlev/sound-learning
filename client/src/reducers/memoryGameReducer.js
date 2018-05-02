@@ -4,15 +4,17 @@ const INITIAL_STATE = {
     tiles: [],
     isWaiting: false,
     numberOfTries: 0,
-    audioCtx: new (window.AudioContext || window.webkitAudioContext)()
+    audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
+    isGameStarted: false,
+    isGameFinished: false,
 }
 
 
-export default function memoryGameReducer (state=INITIAL_STATE, action) {
-    switch(action.type) {
+export default function memoryGameReducer(state = INITIAL_STATE, action) {
+    switch (action.type) {
         case types.START_GAME:
 
-            action.tiles.forEach(function(tile,index) {
+            action.tiles.forEach(function (tile, index) {
                 var oscillator = state.audioCtx.createOscillator();
 
                 oscillator.type = 'square';
@@ -26,7 +28,8 @@ export default function memoryGameReducer (state=INITIAL_STATE, action) {
                 ...state,
                 isWaiting: false,
                 numberOfTries: 0,
-                tiles: [...action.tiles]
+                tiles: [...action.tiles],
+                isGameStarted: action.isGameStarted
             };
 
         case types.FLIP_TILE:
@@ -40,7 +43,7 @@ export default function memoryGameReducer (state=INITIAL_STATE, action) {
                         ...tile,
                         flipped: true
                     },
-                    ...state.tiles.slice(index+1)
+                    ...state.tiles.slice(index + 1)
                 ],
             };
 
@@ -55,7 +58,7 @@ export default function memoryGameReducer (state=INITIAL_STATE, action) {
 
             if (action.flippedTiles[0].image === action.flippedTiles[1].image) {
                 // Tiles are Equal
-                let newTiles = tiles.map((tile)=>{
+                let newTiles = tiles.map((tile) => {
                     if (tile.flipped === true && tile.matched === false) {
                         return {
                             ...tile,
@@ -74,7 +77,7 @@ export default function memoryGameReducer (state=INITIAL_STATE, action) {
 
             } else {
                 // Tiles are not equal
-                let newTiles = tiles.map((tile)=>{
+                let newTiles = tiles.map((tile) => {
                     if (tile.flipped === true && tile.matched === false) {
                         return {
                             ...tile,
@@ -95,9 +98,8 @@ export default function memoryGameReducer (state=INITIAL_STATE, action) {
         case types.INCREMENT_TRIES:
             return {
                 ...state,
-                numberOfTries: state.numberOfTries+1
+                numberOfTries: state.numberOfTries + 1
             }
-
 
         default:
             return state;

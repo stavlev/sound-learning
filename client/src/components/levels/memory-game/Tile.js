@@ -1,9 +1,9 @@
-import React, {Component} from "react";
-import { Button } from 'material-ui';
+import React from "react";
+import {Button} from 'material-ui';
 
-const Tile = (props) =>{
-
+const Tile = (props) => {
     const {tile, index, onClickTile} = props;
+
     let classFlipped = tile.flipped ? 'tile effect__click flipped' : 'tile effect__click';
     let text = tile.flipped ? 'Selected' : 'Music';
 
@@ -12,15 +12,16 @@ const Tile = (props) =>{
     };
 
     return (
-
-        <Button className={classFlipped} onClick={()=>{onClickTile(tile, index)}}>
+        <Button className={classFlipped} onClick={() => {
+            onClickTile(tile, index)
+        }}>
             <div className="tile__front">
             </div>
             <div className="tile__back" style={tileBackgroundImage}>
             </div>
-            {text}</Button>
+            {text}
+        </Button>
     );
-
 }
 
 export default Tile;

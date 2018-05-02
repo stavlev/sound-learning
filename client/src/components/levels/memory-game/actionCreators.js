@@ -1,10 +1,11 @@
 import * as types from "./actionTypes";
 import randomTiles from "./randomTiles";
 
-export function startGame () {
+export function startGame() {
     return {
         type: types.START_GAME,
-        tiles: randomTiles.getTiles()
+        tiles: randomTiles.getTiles(),
+        isGameStarted: true,
     }
 }
 
@@ -16,20 +17,20 @@ export function flipTile(index, tile) {
     }
 }
 
-export function toggleIsWaiting(isWaiting)  {
+export function toggleIsWaiting(isWaiting) {
     return {
         type: types.TOGGLE_IS_WAITING,
         isWaiting
     }
 }
 
-export function incrementTries()  {
+export function incrementTries() {
     return {
         type: types.INCREMENT_TRIES
     }
 }
 
-export function matchCheck (flippedTiles) {
+export function matchCheck(flippedTiles) {
     return {
         type: types.MATCH_CHECK,
         flippedTiles

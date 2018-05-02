@@ -12,7 +12,6 @@ export class TilesBoard extends Component {
 
     constructor(props) {
         super(props);
-
         this.renderTiles = this.renderTiles.bind(this);
         this.onHandleClickTile = this.onHandleClickTile.bind(this);
     }

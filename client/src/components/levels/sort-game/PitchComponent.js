@@ -50,5 +50,4 @@ PitchComponent.propTypes = {
     color: PropTypes.string.isRequired,
     frequency: PropTypes.number.isRequired,
     oscillatorNode: PropTypes.object
-
 };

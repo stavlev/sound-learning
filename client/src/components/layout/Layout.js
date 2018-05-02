@@ -13,7 +13,8 @@ import * as routes from '../../constants/routes';
 import SignInPage from '../../authentication/SignIn';
 import SignUpPage from '../../authentication/SignUp';
 import withAuthentication from "../../authentication/withAuthentication";
-import Navigation from "../../authentication/Navigation"
+import Navigation from "../../authentication/Navigation";
+import GettingToKnow from "../getting-to-know/GettingToKnow";
 
 class Layout extends React.Component {
     render() {
@@ -37,6 +38,7 @@ class Layout extends React.Component {
                             <Route exact path={routes.SIGN_UP} component={SignUpPage} />
                         </div>
                         <div>
+                            <Route path={routes.PITCH_GETTING_TO_KNOW} component={GettingToKnow}/>
                             <Route path={routes.PITCH_SORT_GAME} component={PitchSortGame}/>
                             <Route path={routes.PITCH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame} />
                         </div>

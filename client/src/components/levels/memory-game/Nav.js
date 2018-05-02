@@ -59,7 +59,7 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
     return {
-        numberOfTries: state.memory.numberOfTries
+        numberOfTries: state.memoryGame.numberOfTries
     }
 }
 

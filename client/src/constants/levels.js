@@ -27,7 +27,7 @@ export const LEVELS = [
             {
                 key: 4,
                 header: "Game 3",
-                isEnabled: false,
+                isEnabled: true,
                 routeTo: routes.PITCH_MEMORY_GAME,
             },
             {

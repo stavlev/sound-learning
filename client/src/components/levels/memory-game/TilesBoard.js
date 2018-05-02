@@ -12,46 +12,43 @@ export class TilesBoard extends Component {
 
     constructor(props) {
         super(props);
+
         this.renderTiles = this.renderTiles.bind(this);
         this.onHandleClickTile = this.onHandleClickTile.bind(this);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         const {tiles, toggleIsWaiting, matchCheck, incrementTries} = this.props;
         const flippedTiles = _.filter(tiles, _.matches({'flipped': true, 'matched': false}));
 
 
-        if(flippedTiles.length >= 2) {
+        if (flippedTiles.length >= 2) {
             toggleIsWaiting(true);
 
             // try to fix componentDidUpdate called twice
             // because actions are wrapped inside if statement
-            if(this.props.isWaiting) {
+            if (this.props.isWaiting) {
                 incrementTries();
-                setTimeout(()=>{
+                setTimeout(() => {
                     matchCheck(flippedTiles);
                 }, 500);
             }
-
-
-
-
         }
     }
 
     sleep(milliseconds) {
         var start = new Date().getTime();
         for (var i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > milliseconds){
+            if ((new Date().getTime() - start) > milliseconds) {
                 break;
             }
         }
     }
 
-    async onHandleClickTile(tile, index){
+    async onHandleClickTile(tile, index) {
         const {flipTile, isWaiting, audioCtx} = this.props;
 
-        if(isWaiting) return;
+        if (isWaiting) return;
 
         flipTile(index, tile);
 
@@ -63,7 +60,7 @@ export class TilesBoard extends Component {
     renderTiles() {
         const {tiles} = this.props;
 
-        return tiles.map((tile, i)=>{
+        return tiles.map((tile, i) => {
             return (
                 <Tile tile={tile} key={i} index={i} onClickTile={this.onHandleClickTile}/>
             );
@@ -81,11 +78,11 @@ export class TilesBoard extends Component {
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
-        tiles:state.memory.tiles,
-        isWaiting: state.memory.isWaiting,
-        audioCtx: state.memory.audioCtx
+        tiles: state.memoryGame.tiles,
+        isWaiting: state.memoryGame.isWaiting,
+        audioCtx: state.memoryGame.audioCtx
     };
 }
 

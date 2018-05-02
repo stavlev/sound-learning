@@ -1,4 +1,4 @@
-import * as types from "./actionTypes";
+import * as types from "../components/levels/memory-game/actionTypes";
 
 const INITIAL_STATE = {
     tiles: [],
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 }
 
 
-export function memoryReducer (state=INITIAL_STATE, action) {
+export default function memoryGameReducer (state=INITIAL_STATE, action) {
     switch(action.type) {
         case types.START_GAME:
 

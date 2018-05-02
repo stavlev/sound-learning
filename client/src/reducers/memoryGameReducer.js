@@ -27,9 +27,9 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 isWaiting: false,
+                isGameStarted: action.isGameStarted,
                 numberOfTries: 0,
                 tiles: [...action.tiles],
-                isGameStarted: action.isGameStarted
             };
 
         case types.FLIP_TILE:

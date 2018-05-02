@@ -8,18 +8,6 @@ import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
 
 export class MemoryGame extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClickResetButton = this.handleClickResetButton.bind(this);
-    }
-
-    handleClickResetButton(e) {
-        ///e.preventDefault();
-        setTimeout(() => {
-            this.props.startGame();
-        }, 100)
-    }
-
     render() {
         const {numberOfTries, isGameStarted, isGameFinished} = this.props;
 
@@ -51,13 +39,12 @@ export class MemoryGame extends Component {
                             !isGameStarted ?
                                 <Typography type="display3"
                                             onClick={() => {
-                                                this.handleClickResetButton();
+                                                this.props.startGame();
                                             }}>
                                     Start Game
                                 </Typography>
                                 : (isGameStarted && !isGameFinished) ?
                                 <section>
-                                    <MemoryGame/>
                                     <TilesBoard/>
                                 </section>
                                 :
@@ -72,9 +59,6 @@ export class MemoryGame extends Component {
 }
 
 MemoryGame.propTypes = {
-    /*tiles: PropTypes.func.array,
-    isWaiting: PropTypes.bool,
-    audioCtx: PropTypes.object,*/
     isGameStarted: PropTypes.bool,
     isGameFinished: PropTypes.bool,
     numberOfTries: PropTypes.number,

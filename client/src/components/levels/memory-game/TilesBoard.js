@@ -17,16 +17,15 @@ export class TilesBoard extends Component {
     }
 
     componentDidUpdate() {
-        const {tiles, toggleIsWaiting, matchCheck, incrementTries} = this.props;
+        const {tiles, toggleIsWaiting, matchCheck, incrementTries, isWaiting} = this.props;
         const flippedTiles = _.filter(tiles, _.matches({'flipped': true, 'matched': false}));
-
 
         if (flippedTiles.length >= 2) {
             toggleIsWaiting(true);
 
             // try to fix componentDidUpdate called twice
             // because actions are wrapped inside if statement
-            if (this.props.isWaiting) {
+            if (isWaiting) {
                 incrementTries();
                 setTimeout(() => {
                     matchCheck(flippedTiles);

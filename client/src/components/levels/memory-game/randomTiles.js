@@ -5,7 +5,7 @@ var _tiles = [];
 function generateTiles() {
     let images = [];
 
-    for(let i=1; i < 9; i++) {
+    for (let i = 1; i < 9; i++) {
         images.push(
             {
                 node: null,
@@ -16,8 +16,7 @@ function generateTiles() {
             });
     }
 
-    _tiles =  _.shuffle(_.concat(images, images));
-
+    _tiles = _.shuffle(_.concat(images, images));
 }
 
 function getTiles() {

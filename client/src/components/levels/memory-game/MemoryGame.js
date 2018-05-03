@@ -44,9 +44,7 @@ export class MemoryGame extends Component {
                                     Start Game
                                 </Typography>
                                 : (isGameStarted && !isGameFinished) ?
-                                <section>
-                                    <TilesBoard/>
-                                </section>
+                                <TilesBoard/>
                                 :
                                 <Typography type="display3">
                                     Great! You nailed it :)

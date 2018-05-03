@@ -1,4 +1,4 @@
-import { Typography, Paper } from 'material-ui';
+import {Typography, Paper} from 'material-ui';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
@@ -17,15 +17,17 @@ export class GettingToKnow extends React.Component {
         chooseSubject(match.url);
 
         return (
-            <Paper className="getting-to-know-paper">
-                <Typography type="display2">
-                    {subjectHeader}
-                </Typography>
-                <br/><br/>
-                <Typography type="title">
-                    {subjectText}
-                </Typography>
-            </Paper>
+            <div className="getting-to-know-container">
+                <Paper className="getting-to-know-paper">
+                    <Typography type="display2">
+                        {subjectHeader}
+                    </Typography>
+                    <br/><br/>
+                    <Typography type="title">
+                        {subjectText}
+                    </Typography>
+                </Paper>
+            </div>
         )
     }
 

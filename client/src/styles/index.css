@@ -126,4 +126,14 @@ html {
   margin: 22px !important;
   border-radius: 0% !important; }
 
+.getting-to-know-container {
+  height: 100%;
+  display: flex; }
+  .getting-to-know-container .getting-to-know-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+    min-width: 1100px;
+    max-width: 1100px; }
+
 /*# sourceMappingURL=index.css.map */

@@ -1,4 +1,4 @@
-import { Typography } from 'material-ui';
+import { Typography, Paper } from 'material-ui';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
@@ -10,25 +10,31 @@ export class GettingToKnow extends React.Component {
         super(props);
     }
 
+    render() {
 
-    render(){
-
-        const {subjectText, chooseSubject, match} = this.props;
+        const {subjectHeader, subjectText, chooseSubject, match} = this.props;
 
         chooseSubject(match.url);
 
-        return(
-            <Typography type="headline">
-                {subjectText}
-            </Typography>
+        return (
+            <Paper className="getting-to-know-paper">
+                <Typography type="display2">
+                    {subjectHeader}
+                </Typography>
+                <br/><br/>
+                <Typography type="title">
+                    {subjectText}
+                </Typography>
+            </Paper>
         )
     }
 
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
-        subjectText:state.gettingToKnow.subjectText
+        subjectHeader: state.gettingToKnow.subjectHeader,
+        subjectText: state.gettingToKnow.subjectText
     };
 }
 

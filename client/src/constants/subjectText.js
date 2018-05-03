@@ -1,5 +1,5 @@
 export const PITCH_GAME_TEXT =
-    'Pitch helps us distinguish between low and high sounds. \r' +
+    'Pitch helps us distinguish between low and high sounds. \n' +
     'Imagine that a singer sings the same note twice, one an octave above the other. \n' +
     'You can hear a difference between these two sounds. \n' +
     'That is because their pitch is different.\n' +
@@ -15,3 +15,6 @@ export const PITCH_GAME_TEXT =
     'The human ear is able to hear frequencies of 20 to 20,000 hertz.\n' +
     'Some animals can hear sounds at even higher frequencies.\n' +
     'The reason we cannot hear dog whistles, while they can, is because the frequency of the whistle is too high or too low be processed by our ears.';
+
+
+export const PITCH_GAME_HEADER = 'Pitch';

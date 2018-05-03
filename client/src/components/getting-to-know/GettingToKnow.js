@@ -18,7 +18,7 @@ export class GettingToKnow extends React.Component {
         chooseSubject(match.url);
 
         return(
-            <Typography type="display2">
+            <Typography type="headline">
                 {subjectText}
             </Typography>
         )

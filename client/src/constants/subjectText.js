@@ -1,6 +1,5 @@
-export const PITCH_GAME_TEXT = 'Pitch\n' +
-    '\n' +
-    'Pitch helps us distinguish between low and high sounds. \n' +
+export const PITCH_GAME_TEXT =
+    'Pitch helps us distinguish between low and high sounds. \r' +
     'Imagine that a singer sings the same note twice, one an octave above the other. \n' +
     'You can hear a difference between these two sounds. \n' +
     'That is because their pitch is different.\n' +

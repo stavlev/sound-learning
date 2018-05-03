@@ -13,8 +13,8 @@ export class MultiChoiceQuestionGame extends React.Component {
         const {dispatch, /*audioCtx, */question, answers, isGameStarted, isGameFinished} = this.props;
 
         return (
-            <div className="multi-choice-question-game-container">
-                <Paper className="multi-choice-question-game-paper">
+            <div className="multi-choice-game-container">
+                <Paper className="multi-choice-game-paper">
                     <Typography type="display2">
                         Game 2
                     </Typography>
@@ -22,18 +22,11 @@ export class MultiChoiceQuestionGame extends React.Component {
                     <Typography type="headline">
                         {question.text}
                     </Typography>
-                    <Typography type="title" component="p">
-                        Click the play button to play the sound.
-                        Then, answer the question above according to this sound.
-                    </Typography>
                     <br/>
-                    <Typography type="subheading" component="p">
-                        Take as much time as you need to listen to the given sound :)
-                    </Typography>
-                    <div className="multi-choice-question-game">
+                    <div className="multi-choice-game">
                         {
                             !isGameStarted ?
-                                <Typography type="display3"
+                                <Typography type="display1"
                                             onClick={() => {
                                                 dispatch(startMultiChoiceGame());
                                             }}>
@@ -49,7 +42,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                                     }
                                 </RadioGroup>
                                 :
-                                <Typography type="display3">
+                                <Typography type="display1">
                                     Great! You nailed it :)
                                 </Typography>
                         }

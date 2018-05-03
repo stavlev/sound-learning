@@ -8,13 +8,14 @@
     padding: 30px;
 
     .memory-game {
+      min-width: 1100px;
+      max-width: 1100px;
       padding: 20px;
       text-align: center;
       border: dashed lightgrey 1px;
       cursor: pointer;
 
       .memory-component-list {
-        max-width: 1000px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;

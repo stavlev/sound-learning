@@ -3,7 +3,7 @@ import randomTiles from "./randomTiles";
 
 export function startGame() {
     return {
-        type: types.START_GAME,
+        type: types.START_MEMORY_GAME,
         tiles: randomTiles.getTiles(),
         isGameStarted: true,
     }

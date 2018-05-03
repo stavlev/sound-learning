@@ -9,11 +9,9 @@ const INITIAL_STATE = {
     isGameFinished: false,
 }
 
-
 export default function memoryGameReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
-        case types.START_GAME:
-
+        case types.START_MEMORY_GAME: {
             action.tiles.forEach(function (tile, index) {
                 var oscillator = state.audioCtx.createOscillator();
 
@@ -31,8 +29,9 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
                 numberOfTries: 0,
                 tiles: [...action.tiles],
             };
+        }
 
-        case types.FLIP_TILE:
+        case types.FLIP_TILE: {
             const {index, tile} = action;
 
             return {
@@ -46,14 +45,16 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
                     ...state.tiles.slice(index + 1)
                 ],
             };
+        }
 
-        case types.TOGGLE_IS_WAITING:
+        case types.TOGGLE_IS_WAITING: {
             return {
                 ...state,
                 isWaiting: action.isWaiting
             };
+        }
 
-        case types.MATCH_CHECK:
+        case types.MATCH_CHECK: {
             const {tiles} = state;
 
             if (action.flippedTiles[0].image === action.flippedTiles[1].image) {
@@ -69,10 +70,13 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
                     }
                 });
 
+                const areAllTilesMatched = newTiles.reduce((sum, next) => sum && next.matched, true);
+
                 return {
                     ...state,
                     tiles: newTiles,
-                    isWaiting: false
+                    isWaiting: false,
+                    isGameFinished: areAllTilesMatched
                 };
 
             } else {
@@ -94,12 +98,14 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
                     isWaiting: false
                 }
             }
+        }
 
-        case types.INCREMENT_TRIES:
+        case types.INCREMENT_TRIES: {
             return {
                 ...state,
                 numberOfTries: state.numberOfTries + 1
             }
+        }
 
         default:
             return state;

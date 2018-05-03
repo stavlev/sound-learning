@@ -1,4 +1,4 @@
-export const START_GAME = 'START_GAME';
+export const START_MEMORY_GAME = 'START_MEMORY_GAME';
 export const FLIP_TILE = 'FLIP_TILE';
 export const MATCH_CHECK= 'MATCH_CHECK';
 export const TOGGLE_IS_WAITING = 'TOGGLE_IS_WAITING';

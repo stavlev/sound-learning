@@ -19,15 +19,15 @@ export class MemoryGame extends Component {
                     </Typography>
                     <br/>
                     <Typography type="headline">
-                        Find all the equal notes!
+                        Find all the equal frequencies!
                     </Typography>
                     <Typography type="title" component="p">
                         Click each tile to play the sound.
-                        Click on another tile that you think has the same note.
+                        Click on another tile that you think has the same frequency.
                     </Typography>
                     <br/>
                     <Typography type="subheading" component="p">
-                        Take as much time as you need to distinguish the different frequencies :)
+                        Take as much time as you need to match the different frequencies :)
                     </Typography>
                     <br/><br/>
                     <Typography type="subheading" component="p">
@@ -37,7 +37,7 @@ export class MemoryGame extends Component {
                     <div className="memory-game">
                         {
                             !isGameStarted ?
-                                <Typography type="display3"
+                                <Typography type="display1"
                                             onClick={() => {
                                                 this.props.startGame();
                                             }}>

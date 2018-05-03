@@ -1,0 +1,18 @@
+.multi-choice-game-container {
+  height: 100%;
+  display: flex; }
+  .multi-choice-game-container .multi-choice-game-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px; }
+    .multi-choice-game-container .multi-choice-game-paper .multi-choice-game {
+      padding: 70px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+      cursor: pointer; }
+
+.multi-choice-game:hover {
+  color: azure; }
+
+/*# sourceMappingURL=MultiChoiceGame.css.map */

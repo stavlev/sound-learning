@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import mainReducer from './mainReducer';
 import sortGameReducer from './sortGameReducer'
 import multiChoiceGameReducer from './multiChoiceGameReducer'
+import memoryGameReducer from './memoryGameReducer'
 import sessionReducer from './sessionReducer';
 
 const rootReducer = combineReducers({
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
     sessionState: sessionReducer,
     sortGame: sortGameReducer,
     multiChoiceGame: multiChoiceGameReducer,
+    memoryGame: memoryGameReducer
 });
 
 export default rootReducer;

@@ -10,7 +10,7 @@ import { Button, TextField, Typography } from 'material-ui';
 
 const SignUpPage = ({ history }) =>
     <div>
-        <Typography variant="display2" gutterBottom>
+        <Typography type="display2" gutterBottom>
             Sign Up
         </Typography>
         <SignUpForm history={history}/>
@@ -123,6 +123,7 @@ class SignUpForm extends Component {
                 <Button variant="raised" color="primary" disabled={isInvalid} type="submit">
                     Sign Up
                 </Button>
+                <br/>
                 { error && <p>{error.message}</p> }
             </form>
         );
@@ -130,7 +131,7 @@ class SignUpForm extends Component {
 }
 
 const SignUpLink = () =>
-    <Typography variant="display2" gutterBottom>
+    <Typography type="title" gutterBottom>
         Don't have an account?
         {' '}
         <Link to={routes.SIGN_UP}>Sign Up</Link>

@@ -72,7 +72,7 @@ export class PitchSortGame extends React.Component {
                     <div className="pitch-sort-game">
                         {
                             !isGameStarted ?
-                                <Typography type="display3"
+                                <Typography type="display1"
                                             onClick={() => {
                                                 dispatch(startSortGame());
                                             }}>
@@ -94,7 +94,7 @@ export class PitchSortGame extends React.Component {
                                               }}
                                               />
                                 :
-                                <Typography type="display3">
+                                <Typography type="display1">
                                     Great! You nailed it :)
                                 </Typography>
                         }

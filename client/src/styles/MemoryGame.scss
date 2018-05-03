@@ -1,28 +1,30 @@
-.pitch-sort-game-container {
+.memory-game-container {
   height: 100%;
   display: flex;
 
-  .pitch-sort-game-paper {
-    height: 500px;
+  .memory-game-paper {
+    min-height: 500px;
     margin: auto;
     padding: 30px;
 
-    .pitch-sort-game {
+    .memory-game {
       min-width: 1100px;
+      max-width: 1100px;
       padding: 20px;
-      margin-top: 40px;
       text-align: center;
       border: dashed lightgrey 1px;
       cursor: pointer;
 
-      .pitch-component-list {
+      .memory-component-list {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        flex-wrap: wrap;
 
-        .pitch-paper {
+        .memory-paper {
           height: 100px;
           width: 100px;
+          margin: 10px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -32,11 +34,11 @@
   }
 }
 
-.pitch-sort-game:hover {
+.memory-game:hover {
   color: azure;
 }
 
-.pitch-button {
+.memory-button {
   margin: 22px !important;
   border-radius: 0% !important;
 }

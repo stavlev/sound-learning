@@ -6,7 +6,7 @@ import {Button, TextField, Typography} from 'material-ui';
 
 const SignInPage = ({history}) =>
     <div>
-        <Typography variant="display2" gutterBottom>
+        <Typography type="display2" gutterBottom>
             Sign In
         </Typography>
         <SignInForm history={history}/>

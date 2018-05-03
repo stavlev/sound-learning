@@ -4,12 +4,12 @@ import uuidV4 from 'uuid/v4';
 
 const initialState = {
     /*audioCtx: new (window.AudioContext || window.webkitAudioContext)(),*/
-    question: {text: 'Is this the real life, or is it just fantasy?'},
+    question: {text: 'What is the frequency range of a sound that a human ear can hear?'},
     answers: shuffle([
-        {id: uuidV4(), text: 'Answer 1', isCorrect: false},
-        {id: uuidV4(), text: 'Answer 2', isCorrect: true},
-        {id: uuidV4(), text: 'Answer 3', isCorrect: false},
-        {id: uuidV4(), text: 'Answer 4', isCorrect: false},
+        {id: uuidV4(), text: '10 to 10,000 Hertz', isCorrect: false},
+        {id: uuidV4(), text: '20 to 20,000 Hertz', isCorrect: true},
+        {id: uuidV4(), text: '50 to 50,000 Hertz', isCorrect: false},
+        {id: uuidV4(), text: '0 to 100,000 Hertz', isCorrect: false},
     ]),
     isGameStarted: false,
     isGameFinished: false

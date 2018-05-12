@@ -1,3 +1,5 @@
+import * as cache from "./impulseCache"
+
 function getSample(audioCtx, url, cb) {
 
     //const {audioCtx} = audioCtx;
@@ -55,15 +57,12 @@ export function oscillatorGenerator(audioCtx, frequency, loudness, waveShape, wa
         oscillator.frequency.linearRampToValueAtTime(wavefreq, audioCtx.currentTime + wavetime);
     }
 
-    if (convolverURL !== '') {
+    if (convolverURL !== 0) {
 
         convolver = audioCtx.createConvolver();
         buffer = audioCtx.createBufferSource();
+        convolver.buffer = cache.getImpulse(convolverURL);
         isConvolver = 1;
-
-        getSample(audioCtx, convolverURL, function(impulse) {
-            convolver.buffer = impulse;
-        });
     }
 
     if (isLoudness === 1){

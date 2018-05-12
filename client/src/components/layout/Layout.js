@@ -16,8 +16,15 @@ import SignUpPage from '../../authentication/SignUp';
 import withAuthentication from "../../authentication/withAuthentication";
 import Navigation from "../../authentication/Navigation";
 import GettingToKnow from "../getting-to-know/GettingToKnow";
+import * as cache from "../oscillator/impulseCache";
 
 class Layout extends React.Component {
+
+    constructor(props) {
+        super(props);
+        cache.updateImpulseCache();
+    }
+
     render() {
         return (
             <Router>

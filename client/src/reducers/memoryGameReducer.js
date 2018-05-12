@@ -5,36 +5,19 @@ const INITIAL_STATE = {
     isWaiting: false,
     numberOfTries: 0,
     audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
-
     isGameStarted: false,
     isGameFinished: false,
-    //gainNode: null,
 }
 
 export default function memoryGameReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case types.START_MEMORY_GAME: {
-            /*action.tiles.forEach(function (tile, index) {
-                var oscillator = state.audioCtx.createOscillator();
-
-                oscillator.type = 'square';
-                oscillator.frequency.setValueAtTime(tile.multiplier * 100 + 140, state.audioCtx.currentTime); // value in hertz
-                oscillator.frequency.linearRampToValueAtTime(tile.multiplier * 100 - 130, state.audioCtx.currentTime + 1);
-                oscillator.start();
-
-                tile.node = oscillator;
-            })*/
-
-            /*var gainNodeTemp = state.audioCtx.createGain();
-            gainNodeTemp.gain.value = 0.2;*/
-
             return {
                 ...state,
                 isWaiting: false,
                 isGameStarted: action.isGameStarted,
                 numberOfTries: 0,
                 tiles: [...action.tiles],
-                //gainNode: gainNodeTemp,
             };
         }
 

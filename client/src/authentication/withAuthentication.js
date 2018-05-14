@@ -1,17 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { firebase } from '../firebase';
+import { firebase, db } from '../firebase';
 
 const withAuthentication = (Component) => {
     class WithAuthentication extends React.Component {
         componentDidMount() {
-            const { onSetAuthUser } = this.props;
+            const { onSetAuthUser, onSetdbUser, authUser} = this.props;
 
             firebase.auth.onAuthStateChanged(authUser => {
-                authUser
-                    ? onSetAuthUser(authUser)
-                    : onSetAuthUser(null);
+                if (authUser !== null){
+                    onSetAuthUser(authUser);
+                    db.getUser(authUser.uid).then(snapshot =>
+                        onSetdbUser(snapshot.val())
+                    );
+                }
+                else{
+                    onSetAuthUser(null);
+                    onSetdbUser(null);
+                }
             });
         }
 
@@ -22,11 +29,16 @@ const withAuthentication = (Component) => {
         }
     }
 
-    const mapDispatchToProps = (dispatch) => ({
-        onSetAuthUser: (authUser) => dispatch({ type: 'AUTH_USER_SET', authUser }),
+    const mapStateToProps = (state) => ({
+        authUser: state.sessionState.authUser,
     });
 
-    return connect(null, mapDispatchToProps)(WithAuthentication);
+    const mapDispatchToProps = (dispatch) => ({
+        onSetAuthUser: (authUser) => dispatch({ type: 'AUTH_USER_SET', authUser }),
+        onSetdbUser: (dbUser) => dispatch({type: 'DB_USER_SET', dbUser}),
+    });
+
+    return connect(mapStateToProps, mapDispatchToProps)(WithAuthentication);
 }
 
 export default withAuthentication;

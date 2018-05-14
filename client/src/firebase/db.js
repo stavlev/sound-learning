@@ -36,3 +36,7 @@ export const nextLevel = (id) => {
         userRef.update(update);
     });
 };
+
+
+export const getUser = (id) =>
+    db.ref(`users/${id}`).once('value');

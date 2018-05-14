@@ -6,16 +6,18 @@ import { Button, Typography } from 'material-ui';
 import SignOutButton from './SignOut';
 import * as routes from '../constants/routes';
 
-const Navigation = ({ authUser }) =>
+const Navigation = ({ authUser, dbUser }) =>
     <div>
 
-        { authUser
-            ? <NavigationAuth authUser={authUser}/>
+        {
+            authUser
+            ?
+                dbUser ? <NavigationAuth authUser={authUser} dbUser={dbUser}/> : <NavigationNonAuth />
             : <NavigationNonAuth />
         }
     </div>
 
-const NavigationAuth = ({authUser}) =>
+const NavigationAuth = ({authUser, dbUser}) =>
     <div className="accountSignIn">
         <Typography gutterBottom>
             Account: {authUser.email}
@@ -32,6 +34,7 @@ const NavigationNonAuth = () =>
 
 const mapStateToProps = (state) => ({
     authUser: state.sessionState.authUser,
+    dbUser: state.sessionState.dbUser,
 });
 
 export default connect(mapStateToProps)(Navigation);

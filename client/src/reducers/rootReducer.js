@@ -5,6 +5,7 @@ import multiChoiceGameReducer from './multiChoiceGameReducer'
 import memoryGameReducer from './memoryGameReducer'
 import sessionReducer from './sessionReducer';
 import gettingToKnowReducer from './gettingToKnowReducer';
+import progressSideBarReducer from "./progressSideBarReducer";
 
 const rootReducer = combineReducers({
     main: mainReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     sortGame: sortGameReducer,
     multiChoiceGame: multiChoiceGameReducer,
     gettingToKnow: gettingToKnowReducer,
-    memoryGame: memoryGameReducer
+    memoryGame: memoryGameReducer,
+    progressSideBar: progressSideBarReducer,
 });
 
 export default rootReducer;

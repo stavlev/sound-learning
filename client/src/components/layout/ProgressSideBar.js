@@ -3,16 +3,28 @@ import PropTypes from 'prop-types';
 import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails } from 'material-ui/ExpansionPanel';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import {Lock, LockOpen} from 'material-ui-icons';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
 import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconButton} from 'material-ui';
 import { Link, withRouter } from 'react-router-dom';
 import {LEVELS as levels} from "../../constants/levels";
+import * as actions from "./actionCreators";
 
 class ProgressSideBar extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
+
+        const {levels} = this.props;
+
         return (
             <div className="progress-side-bar-container">
                 {
-                    this.props.levels.map(level =>
+                    levels.map(level =>
                         <ExpansionPanel key={level.key}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className="expansion-panel-summary">
                                 <Typography className="heading">{level.header}</Typography>
@@ -51,7 +63,7 @@ class ProgressSideBar extends React.Component {
 }
 
 ProgressSideBar.defaultProps = {
-    levels: levels
+    klevels: levels
 }
 
 ProgressSideBar.propTypes = {
@@ -68,4 +80,22 @@ ProgressSideBar.propTypes = {
     }))
 }
 
-export default withRouter(ProgressSideBar);
+function mapStateToProps(state) {
+    return {
+        authUser: state.sessionState.authUser,
+        dbUser: state.sessionState.dbUser,
+        levels: state.progressSideBar.levels,
+    };
+}
+
+/*function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateLevels: actions.updateLevels,
+    }, dispatch);
+}*/
+
+export default compose(withRouter,
+    connect(mapStateToProps))
+    (ProgressSideBar);
+
+//export default withRouter(ProgressSideBar);

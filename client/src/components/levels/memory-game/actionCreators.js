@@ -36,3 +36,18 @@ export function matchCheck(flippedTiles) {
         flippedTiles
     }
 }
+
+export function onSetdbUser(dbUser) {
+    return {
+        type: types.DB_USER_SET,
+        dbUser,
+    }
+}
+
+export function updateLevels(level, subLevel) {
+    return {
+        type: types.UPDATE_LEVELS,
+        level,
+        subLevel
+    }
+}

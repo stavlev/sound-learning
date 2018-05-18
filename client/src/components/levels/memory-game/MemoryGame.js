@@ -3,11 +3,26 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {Paper, Typography} from 'material-ui';
+import {db} from "../../../firebase/index";
 
 import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
-
 export class MemoryGame extends Component {
+
+
+    nextLevel(){
+        const {authUser, onSetdbUser, updateLevels} = this.props;
+
+        db.nextLevel(authUser.uid);
+        db.getUser(authUser.uid).then(snapshot =>
+            onSetdbUser(snapshot.val()),
+        );
+        // This is still asynchronious, need to fix if i can
+        db.getUser(authUser.uid).then(snapshot =>
+            updateLevels(snapshot.val().level, snapshot.val().subLevel + 1),
+        );
+    }
+
     render() {
         const {numberOfTries, isGameStarted, isGameFinished} = this.props;
 
@@ -46,7 +61,9 @@ export class MemoryGame extends Component {
                                 : (isGameStarted && !isGameFinished) ?
                                 <TilesBoard/>
                                 :
-                                <Typography type="display1">
+                                <Typography type="display1" onClick={() => {
+                                            this.nextLevel();
+                                            }}>
                                     Great! You nailed it :)
                                 </Typography>
                         }
@@ -66,13 +83,16 @@ function mapStateToProps(state) {
     return {
         isGameStarted: state.memoryGame.isGameStarted,
         isGameFinished: state.memoryGame.isGameFinished,
-        numberOfTries: state.memoryGame.numberOfTries
+        numberOfTries: state.memoryGame.numberOfTries,
+        authUser: state.sessionState.authUser,
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         startGame: actions.startGame,
+        onSetdbUser: actions.onSetdbUser,
+        updateLevels: actions.updateLevels,
     }, dispatch);
 }
 

@@ -1,7 +1,7 @@
-import sleep from '../utils/sleep';
-import getRandomId from '../utils/get-random-id';
-import createAction from '../utils/create-action';
-import { SONG_DELAY_TIME, REDUCED_DELAY_TIME, } from '../constants';
+import sleep from '../../../utils/sleep';
+import getRandomId from '../../../utils/get-random-id';
+import createAction from '../../../utils/create-action';
+import { SONG_DELAY_TIME, REDUCED_DELAY_TIME, } from '../../../constants/simonSaysParams';
 
 export const START_GAME = 'START_GAME';
 export const START_SONG = 'START_SONG';

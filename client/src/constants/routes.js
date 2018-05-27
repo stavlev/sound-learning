@@ -17,11 +17,11 @@ export const LOUDNESS_MULTI_CHOICE_GAME = '/loudness/multi-choice-game';
 export const LOUDNESS_MEMORY_GAME = '/loudness/memory-game';
 export const LOUDNESS_EQUALIZER = '/loudness/equalizer';
 
-export const TIMBRE_GETTING_TO_KNOW = '/timbre/getting-to-know';
-export const TIMBRE_SORT_GAME = '/timbre/sort-game';
-export const TIMBRE_MULTI_CHOICE_GAME = '/timbre/multi-choice-game';
-export const TIMBRE_MEMORY_GAME = '/timbre/memory-game';
-export const TIMBRE_EQUALIZER = '/timbre/equalizer';
+export const CONVOLVER_GETTING_TO_KNOW = '/convolver/getting-to-know';
+export const CONVOLVER_SORT_GAME = '/convolver/sort-game';
+export const CONVOLVER_MULTI_CHOICE_GAME = '/convolver/multi-choice-game';
+export const CONVOLVER_MEMORY_GAME = '/convolver/memory-game';
+export const CONVOLVER_EQUALIZER = '/convolver/equalizer';
 
 export const WAVELENGTH_GETTING_TO_KNOW = '/wavelength/getting-to-know';
 export const WAVELENGTH_SORT_GAME = '/wavelength/sort-game';

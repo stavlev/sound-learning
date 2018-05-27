@@ -5,22 +5,26 @@ import {bindActionCreators} from 'redux';
 import {Paper, Typography} from 'material-ui';
 import {db} from "../../../firebase/index";
 
-import TilesBoard from "./TilesBoard";
+    import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
+import {detectLevel} from '../../../helper_functions/levelDetector';
 export class MemoryGame extends Component {
 
 
     nextLevel(){
-        const {authUser, onSetdbUser, updateLevels} = this.props;
+        const {authUser, onSetdbUser, updateLevels, match, dbUser} = this.props;
+        let levelSublevel = detectLevel(match.url);
 
-        db.nextLevel(authUser.uid);
-        db.getUser(authUser.uid).then(snapshot =>
-            onSetdbUser(snapshot.val()),
-        );
-        // This is still asynchronious, need to fix if i can
-        db.getUser(authUser.uid).then(snapshot =>
-            updateLevels(snapshot.val().level, snapshot.val().subLevel + 1),
-        );
+        db.getUser(authUser.uid).then(function(snapshot) {
+
+            let user = snapshot.val();
+
+            if(levelSublevel[0] === user.level && levelSublevel[1] === user.subLevel){
+                db.nextLevel(authUser.uid);
+                updateLevels(user.level, user.subLevel + 1);
+                onSetdbUser(user);
+            }``
+        });
     }
 
     render() {
@@ -85,6 +89,7 @@ function mapStateToProps(state) {
         isGameFinished: state.memoryGame.isGameFinished,
         numberOfTries: state.memoryGame.numberOfTries,
         authUser: state.sessionState.authUser,
+        dbUser: state.sessionState.dbUser,
     }
 }
 

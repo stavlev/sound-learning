@@ -201,9 +201,6 @@ export default function progressSideBarReducer(state = INITIAL_STATE, action) {
 
             switch (subLevel) {
                 case 2: {
-                    /*tempLevels[level - 1].isEnabled = true;
-                    tempLevels[level - 1].subLevels[subLevel - 1].isEnabled = true;
-                    tempLevels[level - 1].subLevels[subLevel - 2].isEnabled = true;*/
                     for (let i = 0; i < level - 1; i++){
                         tempLevels[i].isEnabled = true;
                         for (let j = 0; j < 5; j++){
@@ -220,7 +217,6 @@ export default function progressSideBarReducer(state = INITIAL_STATE, action) {
                     break;
                 }
                 case 0: {
-                    //tempLevels = initialState.levels;
                     for (let i = 0; i < 5; i++){
                         tempLevels[i].isEnabled = false;
                         for (let j = 0; j < 5; j++){
@@ -230,7 +226,6 @@ export default function progressSideBarReducer(state = INITIAL_STATE, action) {
                     break;
                 }
                 default: {
-                    //tempLevels[level - 1].subLevels[subLevel - 1].isEnabled = true;
 
                     for (let i = 0; i < level - 1; i++){
                         tempLevels[i].isEnabled = true;

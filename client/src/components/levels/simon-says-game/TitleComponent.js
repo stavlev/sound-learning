@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-import { colors } from '../constants';
+import { COLORS } from '../../../constants/simonSaysParams';
 
 const Headline = styled.h1`
   color: #FFF;
@@ -25,7 +25,7 @@ const colorify = ({ colors, value }) => {
 }
 
 const Title = ({ value }) =>
-  (<Headline>{colorify({ colors, value })}</Headline>);
+  (<Headline>{colorify({ COLORS, value })}</Headline>);
 
 Title.propTypes = {
   value: PropTypes.any.isRequired,

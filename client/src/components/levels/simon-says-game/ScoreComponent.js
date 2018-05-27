@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../constants';
+import { COLORS } from '../../../constants/simonSaysParams';
 
 const Score = styled.div`
   position: absolute;
@@ -8,7 +8,7 @@ const Score = styled.div`
   right: 0;
   left: 0;
   margin: auto;
-  background-color: ${colors.dark};
+  background-color: ${COLORS.dark};
   font-size: ${props => props.length <= 2 ? '62px' : '45px'};
   border-radius: 50%;
   width: 120px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { withReflex } from 'reflexbox';
 import color from 'color';
-import createNeonAnimation from '../utils/create-neon-animation';
+import createNeonAnimation from '../../../utils/create-neon-animation';
 
 const transform = `
   transform: scale(1.02);

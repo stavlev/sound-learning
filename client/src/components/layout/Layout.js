@@ -1,8 +1,8 @@
 import React from 'react';
-import {AppBar, IconButton, Typography, Toolbar} from 'material-ui';
+import {AppBar, IconButton, Toolbar, Typography} from 'material-ui';
 import Home from 'material-ui-icons/Home';
 import ProgressSideBar from './ProgressSideBar';
-import PitchSortGame from "../levels/first-level/PitchSortGame";
+import {PitchEqualizer} from "../levels/first-level/equalizer/PitchEqualizer";
 
 export default class Layout extends React.Component {
     render() {
@@ -23,7 +23,7 @@ export default class Layout extends React.Component {
                 <div className="layout-container">
                     <ProgressSideBar/>
                     <div className="layout-content">
-                        <PitchSortGame/>
+                        <PitchEqualizer />
                     </div>
                 </div>
             </div>

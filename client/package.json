@@ -5,6 +5,7 @@
   "dependencies": {
     "material-ui": "^1.0.0-beta.26",
     "material-ui-icons": "^1.0.0-beta.17",
+    "nexusui": "^2.0.5",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
     "random-material-color": "^1.0.3",

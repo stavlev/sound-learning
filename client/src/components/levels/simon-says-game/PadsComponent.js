@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Pad from './Pad';
+import Pad from './PadComponent';
 import { colors } from '../constants';
 
 export const PadsByComponentName = {

@@ -1,27 +1,20 @@
+import * as types from "./actionTypes";
 import sleep from '../../../utils/sleep';
 import getRandomId from '../../../utils/get-random-id';
 import createAction from '../../../utils/create-action';
 import { SONG_DELAY_TIME, REDUCED_DELAY_TIME, } from '../../../constants/simonSaysParams';
 
-export const START_GAME = 'START_GAME';
-export const START_SONG = 'START_SONG';
-export const FINISH_SONG = 'FINISH_SONG';
-export const LIGHTEN_PAD = 'LIGHTEN_PAD';
-export const LIGHTEN_OFF_PAD = 'LIGHTEN_OFF_PAD';
-export const GUESS_COLOR = 'GUESS_COLOR';
-export const NEXT_LEVEL = 'NEXT_LEVEL';
-
-const start = createAction(START_GAME);
-const next = createAction(NEXT_LEVEL);
+const start = createAction(types.START_GAME);
+const next = createAction(types.NEXT_LEVEL);
 
 const startGame = payload => start({ next: getRandomId() });
 const nextLevel = payload => next({ next: getRandomId() });
 
-const guessColor = createAction(GUESS_COLOR);
-const startSong = createAction(START_SONG);
-const finishSong = createAction(FINISH_SONG);
-const lightenPad = createAction(LIGHTEN_PAD);
-const lightenOffPad = createAction(LIGHTEN_OFF_PAD);
+const guessColor = createAction(types.GUESS_COLOR);
+const startSong = createAction(types.START_SONG);
+const finishSong = createAction(types.FINISH_SONG);
+const lightenPad = createAction(types.LIGHTEN_PAD);
+const lightenOffPad = createAction(types.LIGHTEN_OFF_PAD);
 
 const sing = (payload) => async (dispatch, getState) => {
     dispatch(startSong());

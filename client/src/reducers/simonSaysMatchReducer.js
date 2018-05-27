@@ -1,4 +1,4 @@
-import { START_GAME, GUESS_COLOR, NEXT_LEVEL } from '../actions/game';
+import {START_GAME, GUESS_COLOR, NEXT_LEVEL} from '../components/levels/simon-says-game/actionTypes';
 
 export const initialState = {
     guessed: [],
@@ -6,8 +6,8 @@ export const initialState = {
 }
 
 export default function blocks(state = initialState, action) {
-    const { type, payload } = action;
-    switch(type) {
+    const {type, payload} = action;
+    switch (type) {
         case START_GAME:
             return {
                 guessed: [],

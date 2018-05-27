@@ -4,7 +4,7 @@ import {
     GUESS_COLOR,
     NEXT_LEVEL,
     START_GAME,
-} from '../actions/game';
+} from '../components/levels/simon-says-game/actionTypes';
 
 export const initialState = {
     singing: true,
@@ -14,8 +14,8 @@ export const initialState = {
 }
 
 export default function game(state = initialState, action) {
-    const { type, payload } = action;
-    switch(type) {
+    const {type, payload} = action;
+    switch (type) {
         case START_GAME:
             return {
                 ...state,

@@ -1,4 +1,4 @@
-import { LIGHTEN_PAD, LIGHTEN_OFF_PAD } from '../actions/game';
+import { LIGHTEN_PAD, LIGHTEN_OFF_PAD } from '../components/levels/simon-says-game/actionTypes';
 
 export const initialState = [
     {

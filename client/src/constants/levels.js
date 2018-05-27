@@ -1,33 +1,33 @@
 import * as routes from "./routes";
 
-export const LEVELS = [
+export let LEVELS = [
     {
         key: 1,
-        isEnabled: true,
+        isEnabled: false,
         header: "Level 1 - Discovering Pitch",
         subLevels: [
             {
                 key: 1,
                 header: "Getting to know",
-                isEnabled: true,
+                isEnabled: false,
                 routeTo: routes.PITCH_GETTING_TO_KNOW,
             },
             {
                 key: 2,
                 header: "Game 1",
-                isEnabled: true,
+                isEnabled: false,
                 routeTo: routes.PITCH_SORT_GAME,
             },
             {
                 key: 3,
                 header: "Game 2",
-                isEnabled: true,
+                isEnabled: false,
                 routeTo: routes.PITCH_MULTI_CHOICE_GAME,
             },
             {
                 key: 4,
                 header: "Game 3",
-                isEnabled: true,
+                isEnabled: false,
                 routeTo: routes.PITCH_MEMORY_GAME,
             },
             {

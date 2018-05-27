@@ -1,5 +1,5 @@
-import { ids } from '../constants';
+import { IDS } from '../constants/simonSaysParams';
 
-const getRandomId = () => ids[Math.floor(Math.random() * ids.length)];
+const getRandomId = () => IDS[Math.floor(Math.random() * IDS.length)];
 
 export default getRandomId;

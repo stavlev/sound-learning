@@ -1,0 +1,4 @@
+export const GREEK = 'https://firebasestorage.googleapis.com/v0/b/musiclingo-8a4a1.appspot.com/o/Greek%207%20Echo%20Hall.wav?alt=media&token=8fc61182-2fd9-4cbd-9be2-78d66dc35807';
+export const CHATEAU = 'https://firebasestorage.googleapis.com/v0/b/musiclingo-8a4a1.appspot.com/o/Chateau%20de%20Logne%2C%20Outside.wav?alt=media&token=05267770-819c-4e97-8b53-211f0e56fc6d';
+export const STAR = 'https://firebasestorage.googleapis.com/v0/b/musiclingo-8a4a1.appspot.com/o/Rays.wav?alt=media&token=6507cc71-2c6c-49f3-9009-78422cdd58ab';
+export const PARKING_GARAGE = 'https://firebasestorage.googleapis.com/v0/b/musiclingo-8a4a1.appspot.com/o/Parking%20Garage.wav?alt=media&token=0ba1039c-cc7a-4fb7-be94-2bc4e7eeea17';

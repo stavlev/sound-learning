@@ -1,6 +1,6 @@
 import * as ActionTypes from './actionTypes';
 
-export const startGame = () => {
+export const startSortGame = () => {
     return {
         type: ActionTypes.START_SORT_GAME,
         isGameStarted: true

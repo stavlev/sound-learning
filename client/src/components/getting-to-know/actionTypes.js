@@ -1,0 +1,1 @@
+export const CHOOSE_SUBJECT = 'CHOOSE_SUBJECT';

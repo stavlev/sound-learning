@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import PitchComponent from './PitchComponent';
 import {arrayMove, SortableContainer, SortableElement} from 'react-sortable-hoc';
 import {Typography, Paper} from 'material-ui';
-import {startGame,
+import {startSortGame,
         onSortEnd,
         finishSortGame} from "./actionCreators";
 
@@ -71,9 +71,9 @@ export class PitchSortGame extends React.Component {
                     <div className="pitch-sort-game">
                         {
                             !isGameStarted ?
-                                <Typography type="display3"
+                                <Typography type="display1"
                                             onClick={() => {
-                                                dispatch(startGame());
+                                                dispatch(startSortGame());
                                             }}>
                                     Start Game
                                 </Typography>
@@ -93,7 +93,7 @@ export class PitchSortGame extends React.Component {
                                               }}
                                               />
                                 :
-                                <Typography type="display3">
+                                <Typography type="display1">
                                     Great! You nailed it :)
                                 </Typography>
                         }
@@ -116,22 +116,6 @@ const isArraySorted = (arr) => {
 
     return sorted;
 };
-
-//
-// PitchSortGame.defaultProps = {
-//     audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
-//     frequencies: shuffle([
-//         {id: uuidV4(), frequency: 240, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 340, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 440, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 540, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 640, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 740, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}},
-//         {id: uuidV4(), frequency: 840, color: randomMaterialColor.getColor(), isPlaying: false, oscillatorNode: {}}
-//         ]),
-//     isGameStarted: false,
-//     isGameFinished: false
-// };
 
 PitchSortGame.propTypes = {
     dispatch: PropTypes.func.isRequired,

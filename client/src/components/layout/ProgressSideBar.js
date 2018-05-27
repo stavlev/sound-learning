@@ -3,177 +3,28 @@ import PropTypes from 'prop-types';
 import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails } from 'material-ui/ExpansionPanel';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import {Lock, LockOpen} from 'material-ui-icons';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
 import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconButton} from 'material-ui';
+import { Link, withRouter } from 'react-router-dom';
+import {LEVELS as levels} from "../../constants/levels";
+import * as actions from "./actionCreators";
 
-const levels = [
-    {
-        key: 1,
-        isEnabled: true,
-        header: "Level 1 - Discovering Pitch",
-        subLevels: [
-            {
-                key: 1,
-                header: "Getting to know",
-                isEnabled: true,
-            },
-            {
-                key: 2,
-                header: "Game 1",
-                isEnabled: true,
-            },
-            {
-                key: 3,
-                header: "Game 2",
-                isEnabled: false,
-            },
-            {
-                key: 4,
-                header: "Game 3",
-                isEnabled: false,
-            },
-            {
-                key: 5,
-                header: "Equalizer Game",
-                isEnabled: false,
-            },
-        ]
-    },
-    {
-        key: 2,
-        isEnabled: false,
-        header: "Level 2 - Discovering Loudness",
-        subLevels: [
-            {
-                key: 1,
-                header: "Getting to know",
-                isEnabled: false,
-            },
-            {
-                key: 2,
-                header: "Game 1",
-                isEnabled: false,
-            },
-            {
-                key: 3,
-                header: "Game 2",
-                isEnabled: false,
-            },
-            {
-                key: 4,
-                header: "Game 3",
-                isEnabled: false,
-            },
-            {
-                key: 5,
-                header: "Equalizer Game",
-                isEnabled: false,
-            },
-        ]
-    },
-    {
-        key: 3,
-        isEnabled: false,
-        header: "Level 3 - Discovering Timbre",
-        subLevels: [
-            {
-                key: 1,
-                header: "Getting to know",
-                isEnabled: false,
-            },
-            {
-                key: 2,
-                header: "Game 1",
-                isEnabled: false,
-            },
-            {
-                key: 3,
-                header: "Game 2",
-                isEnabled: false,
-            },
-            {
-                key: 4,
-                header: "Game 3",
-                isEnabled: false,
-            },
-            {
-                key: 5,
-                header: "Equalizer Game",
-                isEnabled: false,
-            },
-        ]
-    },
-    {
-        key: 4,
-        isEnabled: false,
-        header: "Level 4 - Discovering Wavelength",
-        subLevels: [
-            {
-                key: 1,
-                header: "Getting to know",
-                isEnabled: false,
-            },
-            {
-                key: 2,
-                header: "Game 1",
-                isEnabled: false,
-            },
-            {
-                key: 3,
-                header: "Game 2",
-                isEnabled: false,
-            },
-            {
-                key: 4,
-                header: "Game 3",
-                isEnabled: false,
-            },
-            {
-                key: 5,
-                header: "Equalizer Game",
-                isEnabled: false,
-            },
-        ]
-    },
-    {
-        key: 5,
-        isEnabled: false,
-        header: "Level 5 - Discovering Wave Shape",
-        subLevels: [
-            {
-                key: 1,
-                header: "Getting to know",
-                isEnabled: false,
-            },
-            {
-                key: 2,
-                header: "Game 1",
-                isEnabled: false,
-            },
-            {
-                key: 3,
-                header: "Game 2",
-                isEnabled: false,
-            },
-            {
-                key: 4,
-                header: "Game 3",
-                isEnabled: false,
-            },
-            {
-                key: 5,
-                header: "Equalizer Game",
-                isEnabled: false,
-            },
-        ]
+class ProgressSideBar extends React.Component {
+
+    constructor(props) {
+        super(props);
     }
-];
 
-export default class ProgressSideBar extends React.Component {
     render() {
+
+        const {levels} = this.props;
+
         return (
             <div className="progress-side-bar-container">
                 {
-                    this.props.levels.map(level =>
+                    levels.map(level =>
                         <ExpansionPanel key={level.key}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} className="expansion-panel-summary">
                                 <Typography className="heading">{level.header}</Typography>
@@ -185,7 +36,7 @@ export default class ProgressSideBar extends React.Component {
                                         level.subLevels.map(subLevel =>
                                             <ListItem key={subLevel.key}
                                                       className="list-item"
-                                                      button
+                                                      component={Link} to={subLevel.routeTo}
                                                       disabled={!subLevel.isEnabled}>
                                                 <ListItemText primary={subLevel.header} />
                                                 <ListItemSecondaryAction>
@@ -212,7 +63,7 @@ export default class ProgressSideBar extends React.Component {
 }
 
 ProgressSideBar.defaultProps = {
-    levels: levels
+    klevels: levels
 }
 
 ProgressSideBar.propTypes = {
@@ -223,7 +74,28 @@ ProgressSideBar.propTypes = {
         subLevels: PropTypes.arrayOf(PropTypes.shape({
             key: PropTypes.number,
             header: PropTypes.string,
-            isEnabled: PropTypes.bool
+            isEnabled: PropTypes.bool,
+            routeTo: PropTypes.string,
         }))
     }))
 }
+
+function mapStateToProps(state) {
+    return {
+        authUser: state.sessionState.authUser,
+        dbUser: state.sessionState.dbUser,
+        levels: state.progressSideBar.levels,
+    };
+}
+
+/*function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        updateLevels: actions.updateLevels,
+    }, dispatch);
+}*/
+
+export default compose(withRouter,
+    connect(mapStateToProps))
+    (ProgressSideBar);
+
+//export default withRouter(ProgressSideBar);

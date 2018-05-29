@@ -136,4 +136,8 @@ html {
     min-width: 1100px;
     max-width: 1100px; }
 
+.accountSignIn {
+  display: flex;
+  align-items: baseline; }
+
 /*# sourceMappingURL=index.css.map */

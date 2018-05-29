@@ -32,7 +32,7 @@ class Layout extends React.Component {
                     <AppBar position="fixed" color="primary" className="app-bar">
                         <Toolbar>
                             <Typography type="title" color="inherit" className="app-title">
-                                Sound App
+                                Musiclingo
                             </Typography>
                             <div>
                                 <Navigation/>

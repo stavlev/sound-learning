@@ -18,6 +18,8 @@ html {
   .layout .logo {
     height: 85px;
     margin: 10px 5px; }
+  .layout .app-tool-bar {
+    justify-content: space-between; }
   .layout .layout-container {
     height: 100%;
     display: flex;

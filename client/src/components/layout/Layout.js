@@ -26,8 +26,8 @@ class Layout extends React.Component {
         return (
             <Router>
                 <div className="layout">
-                    <AppBar position="fixed" color="primary" className="app-bar">
-                        <Toolbar>
+                    <AppBar color="primary" className="app-bar">
+                        <Toolbar className="app-tool-bar">
                             <img className="logo" src={logo}/>
                             <Navigation/>
                         </Toolbar>

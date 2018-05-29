@@ -55,7 +55,7 @@ export class PitchSortGame extends React.Component {
             <div className="pitch-sort-game-container">
                 <Paper className="pitch-sort-game-paper">
                     <Typography type="display2">
-                        Game 1
+                        Sort Game
                     </Typography>
                     <br/>
                     <Typography type="headline">

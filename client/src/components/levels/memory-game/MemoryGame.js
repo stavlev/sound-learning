@@ -34,7 +34,7 @@ export class MemoryGame extends Component {
             <div className="memory-game-container">
                 <Paper className="memory-game-paper">
                     <Typography type="display2">
-                        Game 3
+                        Memory Game
                     </Typography>
                     <br/>
                     <Typography type="headline">

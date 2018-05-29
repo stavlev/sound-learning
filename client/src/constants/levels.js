@@ -14,19 +14,19 @@ export let LEVELS = [
             },
             {
                 key: 2,
-                header: "Game 1",
+                header: "Sort Game",
                 isEnabled: false,
                 routeTo: routes.PITCH_SORT_GAME,
             },
             {
                 key: 3,
-                header: "Game 2",
+                header: "Multi-Choice Game",
                 isEnabled: false,
                 routeTo: routes.PITCH_MULTI_CHOICE_GAME,
             },
             {
                 key: 4,
-                header: "Game 3",
+                header: "Memory Game",
                 isEnabled: false,
                 routeTo: routes.PITCH_MEMORY_GAME,
             },

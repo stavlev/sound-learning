@@ -10,6 +10,7 @@ import ProgressSideBar from './ProgressSideBar';
 import PitchSortGame from "../levels/sort-game/PitchSortGame";
 import MultiChoiceQuestionGame from "../levels/multi-choice-question-game/MultiChoiceQuestionGame";
 import MemoryGame from "../levels/memory-game/MemoryGame"
+import SimonSaysBoard from "../levels/simon-says-game/SimonSaysBoard"
 import * as routes from '../../constants/routes';
 import SignInPage from '../../authentication/SignIn';
 import SignUpPage from '../../authentication/SignUp';
@@ -50,6 +51,7 @@ class Layout extends React.Component {
                             <Route path={routes.PITCH_SORT_GAME} component={PitchSortGame}/>
                             <Route path={routes.PITCH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                             <Route path={routes.PITCH_MEMORY_GAME} component={MemoryGame}/>
+                            <Route path={routes.PITCH_SIMON_SAYS_GAME} component={SimonSaysBoard}/>
                         </div>
                     </div>
                 </div>

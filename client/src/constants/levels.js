@@ -36,6 +36,12 @@ export let LEVELS = [
                 isEnabled: false,
                 routeTo: routes.PITCH_EQUALIZER,
             },
+            {
+                key: 6,
+                header: "Simon Says Game",
+                isEnabled: false,
+                routeTo: routes.PITCH_SIMON_SAYS_GAME,
+            },
         ]
     },
     {

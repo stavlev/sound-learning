@@ -21,6 +21,11 @@ export function detectLevel(url){
         levelSubLevel[1] = positions.PITCH_EQUALIZER;
     }
 
+    if (url.includes(routes.PITCH_SIMON_SAYS_GAME)) {
+        levelSubLevel[0] = positions.PITCH_LEVELS;
+        levelSubLevel[1] = positions.PITCH_SIMON_SAYS_GAME;
+    }
+
     return levelSubLevel;
 }
 

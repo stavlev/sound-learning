@@ -10,6 +10,7 @@ export const PITCH_SORT_GAME = '/pitch/sort-game';
 export const PITCH_MULTI_CHOICE_GAME = '/pitch/multi-choice-game';
 export const PITCH_MEMORY_GAME = '/pitch/memory-game';
 export const PITCH_EQUALIZER = '/pitch/equalizer';
+export const PITCH_SIMON_SAYS_GAME = '/pitch/simon-says-game';
 
 export const LOUDNESS_GETTING_TO_KNOW = '/loudness/getting-to-know';
 export const LOUDNESS_SORT_GAME = '/loudness/sort-game';

@@ -8,3 +8,4 @@ export const PITCH_SORT_GAME = 2;
 export const PITCH_MULTI_CHOICE_GAME = 3;
 export const PITCH_MEMORY_GAME = 4;
 export const PITCH_EQUALIZER = 5;
+export const PITCH_SIMON_SAYS_GAME = 6;

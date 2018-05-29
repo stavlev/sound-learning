@@ -6,6 +6,7 @@ import memoryGameReducer from './memoryGameReducer'
 import sessionReducer from './sessionReducer';
 import gettingToKnowReducer from './gettingToKnowReducer';
 import progressSideBarReducer from "./progressSideBarReducer";
+import pitchEqualizerReducer from "../components/levels/equalizer/reducer";
 
 const rootReducer = combineReducers({
     main: mainReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     gettingToKnow: gettingToKnowReducer,
     memoryGame: memoryGameReducer,
     progressSideBar: progressSideBarReducer,
+    pitchEqualizer: pitchEqualizerReducer
 });
 
 export default rootReducer;

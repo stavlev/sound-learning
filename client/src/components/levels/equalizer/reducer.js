@@ -4,10 +4,13 @@ const initialState = {
     audioCtx: new (window.AudioContext || window.webkitAudioContext)(),
     isGameStarted: false,
     isGameFinished: false,
-    destFrequency: 0,
-    knobStartFrequency: 0,
+    destFrequency: 400,
+    knobStartFrequency: 420,
     destOscillatorNode: {},
-    knobOscillatorNode: {}
+    knobOscillatorNode: {},
+    isDestPlaying: false,
+    isKnobPlaying: false,
+    isTryAgain: false
 };
 
 export default function pitchEqualizerReducer(state = initialState, action) {
@@ -19,9 +22,30 @@ export default function pitchEqualizerReducer(state = initialState, action) {
             };
 
         case ActionTypes.FINISH_GAME:
+            state.knobOscillatorNode.stop();
+            state.destOscillatorNode.stop();
+
             return {
                 ...state,
                 isGameFinished: action.isGameFinished
+            };
+
+        case ActionTypes.ON_DEST_BUTTON_CLICK:
+            return {
+                ...state,
+                isDestPlaying: !state.isDestPlaying
+            };
+
+        case ActionTypes.ON_KNOB_BUTTON_CLICK:
+            return {
+                ...state,
+                isKnobPlaying: !state.isKnobPlaying
+            };
+
+        case ActionTypes.ON_TRY_AGAIN:
+            return {
+                ...state,
+                isTryAgain: !state.isTryAgain
             };
 
         case ActionTypes.SET_DEST_OSCILLATOR_NODE: {

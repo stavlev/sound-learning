@@ -1,12 +1,8 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-} from 'react-router-dom';
-import {AppBar, IconButton, Typography, Toolbar, Button} from 'material-ui';
-import Home from 'material-ui-icons/Home';
+import {BrowserRouter as Router, Route,} from 'react-router-dom';
+import {AppBar, Toolbar, Typography} from 'material-ui';
 import ProgressSideBar from './ProgressSideBar';
+import PitchEqualizer from "../levels/equalizer/PitchEqualizer";
 import PitchSortGame from "../levels/sort-game/PitchSortGame";
 import MultiChoiceQuestionGame from "../levels/multi-choice-question-game/MultiChoiceQuestionGame";
 import MemoryGame from "../levels/memory-game/MemoryGame"
@@ -50,6 +46,7 @@ class Layout extends React.Component {
                             <Route path={routes.PITCH_SORT_GAME} component={PitchSortGame}/>
                             <Route path={routes.PITCH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                             <Route path={routes.PITCH_MEMORY_GAME} component={MemoryGame}/>
+                            <Route path={routes.PITCH_EQUALIZER} component={PitchEqualizer}/>
                         </div>
                     </div>
                 </div>

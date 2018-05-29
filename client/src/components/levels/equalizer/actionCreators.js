@@ -14,7 +14,25 @@ export const finishGame = () => {
     };
 };
 
-export const setDestOscillatorNode = (id, frequency) => {
+export const onDestButtonClick = () => {
+    return {
+        type: ActionTypes.ON_DEST_BUTTON_CLICK
+    };
+};
+
+export const onKnobButtonClick = () => {
+    return {
+        type: ActionTypes.ON_KNOB_BUTTON_CLICK
+    };
+};
+
+export const onTryAgain = () => {
+    return {
+        type: ActionTypes.ON_TRY_AGAIN
+    };
+};
+
+export const setDestOscillatorNode = (frequency) => {
     return {
         type: ActionTypes.SET_DEST_OSCILLATOR_NODE,
         frequency: frequency

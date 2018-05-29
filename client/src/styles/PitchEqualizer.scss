@@ -1,0 +1,55 @@
+.pitch-equalizer-container {
+    height: 100%;
+    display: flex;
+
+  .pitch-equalizer-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+
+    .pitch-equalizer-game {
+      min-width: 1100px;
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+
+      .dest-freq-container {
+        display: inline-flex;
+
+        .play-dest-button {
+          border-radius: 0;
+          margin-left: 15px;
+        }
+
+        p {
+          align-self: center;
+        }
+      }
+
+      .knob-freq-container {
+        .knob-title {
+          display: inline-flex;
+
+          p {
+            align-self: center;
+          }
+
+          .play-knob-button {
+            border-radius: 0;
+            margin-left: 15px;
+          }
+        }
+
+        .check {
+          width: 100%;
+          margin-top: 15px !important;
+        }
+
+        #dial, .check {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}

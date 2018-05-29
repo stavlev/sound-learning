@@ -1,4 +1,4 @@
-import * as ActionTypes from '../components/levels/multi-choice-question-game/actionTypes';
+import * as ActionTypes from './actionTypes';
 import shuffle from "shuffle-array";
 import uuidV4 from 'uuid/v4';
 

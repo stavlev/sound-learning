@@ -1,4 +1,4 @@
-import * as types from "../components/levels/memory-game/actionTypes";
+import * as types from "./actionTypes";
 
 const INITIAL_STATE = {
     tiles: [],

@@ -1,6 +1,6 @@
-import * as ActionTypes from "../components/getting-to-know/actionTypes";
-import * as routes from "../constants/routes";
-import * as subjectTextConst from "../constants/subjectText";
+import * as ActionTypes from "./actionTypes";
+import * as routes from "../../constants/routes";
+import * as subjectTextConst from "../../constants/subjectText";
 
 const initialState = {
     subjectHeader: '',

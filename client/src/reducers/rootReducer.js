@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import mainReducer from './mainReducer';
-import sortGameReducer from './sortGameReducer'
-import multiChoiceGameReducer from './multiChoiceGameReducer'
-import memoryGameReducer from './memoryGameReducer'
+import sortGameReducer from '../components/levels/sort-game/sortGameReducer'
+import multiChoiceGameReducer from '../components/levels/multi-choice-question-game/multiChoiceGameReducer'
+import memoryGameReducer from '../components/levels/memory-game/memoryGameReducer'
 import sessionReducer from './sessionReducer';
-import gettingToKnowReducer from './gettingToKnowReducer';
-import progressSideBarReducer from "./progressSideBarReducer";
+import gettingToKnowReducer from '../components/getting-to-know/gettingToKnowReducer';
+import progressSideBarReducer from "../components/layout/progressSideBarReducer";
 
 const rootReducer = combineReducers({
     main: mainReducer,

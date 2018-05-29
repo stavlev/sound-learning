@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import ReactDOM from 'react-dom';
 import reducer from './reducers/rootReducer';
 import { Provider } from 'react-redux'
-import './styles/index.css';
+import './assets/styles/index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 

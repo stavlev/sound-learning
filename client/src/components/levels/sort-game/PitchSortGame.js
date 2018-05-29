@@ -55,11 +55,11 @@ export class PitchSortGame extends React.Component {
             <div className="pitch-sort-game-container">
                 <Paper className="pitch-sort-game-paper">
                     <Typography type="display2">
-                        Game 1
+                        Sort Game
                     </Typography>
                     <br/>
                     <Typography type="headline">
-                        Sort the given sounds according to their frequency
+                        Sort the given sounds according to their frequency, placing the lower sounds to the left.
                     </Typography>
                     <Typography type="title" component="p">
                         Click each button to play/stop the sound.

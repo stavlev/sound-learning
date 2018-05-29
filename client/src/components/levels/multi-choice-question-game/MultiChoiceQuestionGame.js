@@ -16,7 +16,7 @@ export class MultiChoiceQuestionGame extends React.Component {
             <div className="multi-choice-game-container">
                 <Paper className="multi-choice-game-paper">
                     <Typography type="display2">
-                        Game 2
+                        Multi Choice Question Game
                     </Typography>
                     <br/>
                     <Typography type="headline">

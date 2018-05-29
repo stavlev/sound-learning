@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-} from 'react-router-dom';
-import {AppBar, IconButton, Typography, Toolbar, Button} from 'material-ui';
-import Home from 'material-ui-icons/Home';
+import {BrowserRouter as Router, Route,} from 'react-router-dom';
+import {AppBar, IconButton, Toolbar} from 'material-ui';
+import logo from "../../assets/Musiclingo.png";
+
 import ProgressSideBar from './ProgressSideBar';
 import PitchSortGame from "../levels/sort-game/PitchSortGame";
 import MultiChoiceQuestionGame from "../levels/multi-choice-question-game/MultiChoiceQuestionGame";
@@ -29,14 +26,10 @@ class Layout extends React.Component {
         return (
             <Router>
                 <div className="layout">
-                    <AppBar position="fixed" color="primary" className="app-bar">
-                        <Toolbar>
-                            <Typography type="title" color="inherit" className="app-title">
-                                Sound App
-                            </Typography>
-                            <div>
-                                <Navigation/>
-                            </div>
+                    <AppBar color="primary" className="app-bar">
+                        <Toolbar className="app-tool-bar">
+                            <img className="logo" src={logo}/>
+                            <Navigation/>
                         </Toolbar>
                     </AppBar>
                     <div className="layout-container">

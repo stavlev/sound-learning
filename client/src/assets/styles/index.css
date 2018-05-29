@@ -15,6 +15,11 @@ html {
   flex-direction: column; }
   .layout .app-title {
     flex: 1; }
+  .layout .logo {
+    height: 85px;
+    margin: 10px 5px; }
+  .layout .app-tool-bar {
+    justify-content: space-between; }
   .layout .layout-container {
     height: 100%;
     display: flex;
@@ -23,7 +28,9 @@ html {
     .layout .layout-container .layout-content {
       flex-grow: 1; }
     .layout .layout-container .progress-side-bar-container {
-      border-right: 1px solid lightgrey; }
+      border-right: 1px solid lightgrey;
+      position: relative;
+      top: 45px; }
       .layout .layout-container .progress-side-bar-container .heading {
         font-size: 0.9375rem;
         font-weight: normal; }
@@ -135,5 +142,9 @@ html {
     padding: 30px;
     min-width: 1100px;
     max-width: 1100px; }
+
+.accountSignIn {
+  display: flex;
+  align-items: baseline; }
 
 /*# sourceMappingURL=index.css.map */

@@ -19,7 +19,7 @@ const Navigation = ({ authUser, dbUser }) =>
 
 const NavigationAuth = ({authUser, dbUser}) =>
     <div className="accountSignIn">
-        <Typography gutterBottom>
+        <Typography color="inherit" gutterBottom>
             Account: {authUser.email}
         </Typography>
         <SignOutButton />

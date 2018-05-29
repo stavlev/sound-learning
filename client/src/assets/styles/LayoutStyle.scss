@@ -7,6 +7,11 @@
     flex: 1;
   }
 
+  .logo {
+    height: 85px;
+    margin: 10px 5px;
+  }
+
   .layout-container {
     height: 100%;
     display: flex;
@@ -19,6 +24,8 @@
 
     .progress-side-bar-container {
       border-right: 1px solid lightgrey;
+      position: relative;
+      top: 45px;
 
       .heading {
         font-size: 0.9375rem;

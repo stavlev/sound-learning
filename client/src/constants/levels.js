@@ -187,3 +187,11 @@ export let LEVELS = [
         ]
     }
 ];
+
+export function updateLevels(level, subLevel){
+    let isEnabled = true;
+
+    for (let i = 1; i <= 5; i++){
+
+    }
+}

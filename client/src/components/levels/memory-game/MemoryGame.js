@@ -23,7 +23,7 @@ export class MemoryGame extends Component {
                 db.nextLevel(authUser.uid);
                 updateLevels(user.level, user.subLevel + 1);
                 onSetdbUser(user);
-            }``
+            }
         });
     }
 

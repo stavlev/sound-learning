@@ -10,6 +10,7 @@ import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconB
 import { Link, withRouter } from 'react-router-dom';
 import {LEVELS as levels} from "../../constants/levels";
 import * as actions from "./actionCreators";
+import * as routes from "../../constants/routes";
 
 class ProgressSideBar extends React.Component {
 
@@ -36,7 +37,7 @@ class ProgressSideBar extends React.Component {
                                         level.subLevels.map(subLevel =>
                                             <ListItem key={subLevel.key}
                                                       className="list-item"
-                                                      component={Link} to={subLevel.routeTo}
+                                                      component={Link} to={subLevel.isEnabled ? subLevel.routeTo : routes.HOME}
                                                       disabled={!subLevel.isEnabled}>
                                                 <ListItemText primary={subLevel.header} />
                                                 <ListItemSecondaryAction>

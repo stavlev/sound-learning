@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {Paper, Typography} from 'material-ui';
 import {db} from "../../../firebase/index";
+import { compose } from 'recompose';
+import { Link, withRouter } from 'react-router-dom';
 
     import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
-import {detectLevel} from '../../../helper_functions/levelDetector';
+import {detectLevel, getNextLevelRoute} from '../../../helper_functions/levelDetector';
 export class MemoryGame extends Component {
 
 
@@ -28,7 +30,9 @@ export class MemoryGame extends Component {
     }
 
     render() {
-        const {numberOfTries, isGameStarted, isGameFinished} = this.props;
+        const {numberOfTries, isGameStarted, isGameFinished, match} = this.props;
+
+        let nextLevelRoute = getNextLevelRoute(match.url);
 
         return (
             <div className="memory-game-container">
@@ -67,8 +71,9 @@ export class MemoryGame extends Component {
                                 :
                                 <Typography type="display1" onClick={() => {
                                             this.nextLevel();
-                                            }}>
-                                    Great! You nailed it :)
+                                            }}
+                                            component={Link} to={nextLevelRoute}>
+                                    Great! You nailed it, Click here to advance to the next level
                                 </Typography>
                         }
                     </div>
@@ -101,4 +106,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MemoryGame);
+export default compose(withRouter,connect(mapStateToProps, mapDispatchToProps))(MemoryGame);

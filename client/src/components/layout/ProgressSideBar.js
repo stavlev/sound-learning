@@ -5,11 +5,9 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import {Lock, LockOpen} from 'material-ui-icons';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import {bindActionCreators} from "redux";
 import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconButton} from 'material-ui';
 import { Link, withRouter } from 'react-router-dom';
 import {LEVELS as levels} from "../../constants/levels";
-import * as actions from "./actionCreators";
 import * as routes from "../../constants/routes";
 
 class ProgressSideBar extends React.Component {
@@ -64,7 +62,7 @@ class ProgressSideBar extends React.Component {
 }
 
 ProgressSideBar.defaultProps = {
-    klevels: levels
+    levels: levels
 }
 
 ProgressSideBar.propTypes = {

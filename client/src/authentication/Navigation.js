@@ -1,36 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button, Typography } from 'material-ui';
-
+import { Typography } from 'material-ui';
 import SignOutButton from './SignOut';
-import * as routes from '../constants/routes';
 
-const Navigation = ({ authUser, dbUser }) =>
-    <div>
+const Navigation = ({ authUser, dbUser }) => {
+    return <div>
+            { authUser
+                ? <NavigationAuth authUser={authUser} dbUser={dbUser} />
+                : null
+            }
+            </div>
+};
 
-        {
-            authUser
-            ?
-                dbUser ? <NavigationAuth authUser={authUser} dbUser={dbUser}/> : <NavigationNonAuth />
-            : <NavigationNonAuth />
-        }
-    </div>
 
 const NavigationAuth = ({authUser, dbUser}) =>
     <div className="accountSignIn">
         <Typography color="inherit" gutterBottom>
-            Account: {authUser.email}
+            <b>Account:</b> {authUser.email}
         </Typography>
         <SignOutButton />
     </div>
 
-const NavigationNonAuth = () =>
-    <div>
-        <Button color="contrast" component={Link} to={routes.SIGN_IN}>
-            Sign In
-        </Button>
-    </div>
 
 const mapStateToProps = (state) => ({
     authUser: state.sessionState.authUser,

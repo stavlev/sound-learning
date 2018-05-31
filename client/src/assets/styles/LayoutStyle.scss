@@ -16,11 +16,51 @@
     justify-content: space-between;
   }
 
+  .home-page-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+
+    h1, h2 {
+      font-family: 'Nanum Pen Script', cursive !important;
+    }
+
+    h1 {
+      font-size: 3.125rem !important;
+      font-weight: bold !important;
+    }
+
+    h2 {
+      font-size: 2.3125rem !important;
+    }
+
+    .sign-in-page, .sign-up-page {
+      width: 40%;
+      align-self: center;
+
+      .email, .password-input, .full-name, .confirm-password-input,
+      .sign-up-button, .sign-in-button {
+        width: 300px;
+      }
+    }
+  }
+
+  .sign-in-sign-up {
+    padding-left: 50px;
+  }
+
   .layout-container {
     height: 100%;
     display: flex;
     margin-top: 105px;
     flex-direction: row;
+
+    .games-container {
+      width: 100%;
+      display: flex;
+    }
 
     .layout-content {
       flex-grow: 1;

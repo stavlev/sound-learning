@@ -20,11 +20,36 @@ html {
     margin: 10px 5px; }
   .layout .app-tool-bar {
     justify-content: space-between; }
+  .layout .home-page-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke; }
+    .layout .home-page-container h1, .layout .home-page-container h2 {
+      font-family: 'Nanum Pen Script', cursive !important; }
+    .layout .home-page-container h1 {
+      font-size: 3.125rem !important;
+      font-weight: bold !important; }
+    .layout .home-page-container h2 {
+      font-size: 2.3125rem !important; }
+    .layout .home-page-container .sign-in-page, .layout .home-page-container .sign-up-page {
+      width: 40%;
+      align-self: center; }
+      .layout .home-page-container .sign-in-page .email, .layout .home-page-container .sign-in-page .password-input, .layout .home-page-container .sign-in-page .full-name, .layout .home-page-container .sign-in-page .confirm-password-input,
+      .layout .home-page-container .sign-in-page .sign-up-button, .layout .home-page-container .sign-in-page .sign-in-button, .layout .home-page-container .sign-up-page .email, .layout .home-page-container .sign-up-page .password-input, .layout .home-page-container .sign-up-page .full-name, .layout .home-page-container .sign-up-page .confirm-password-input,
+      .layout .home-page-container .sign-up-page .sign-up-button, .layout .home-page-container .sign-up-page .sign-in-button {
+        width: 300px; }
+  .layout .sign-in-sign-up {
+    padding-left: 50px; }
   .layout .layout-container {
     height: 100%;
     display: flex;
     margin-top: 105px;
     flex-direction: row; }
+    .layout .layout-container .games-container {
+      width: 100%;
+      display: flex; }
     .layout .layout-container .layout-content {
       flex-grow: 1; }
     .layout .layout-container .game-content {
@@ -170,6 +195,11 @@ html {
         margin-top: 15px !important; }
       .pitch-equalizer-container .pitch-equalizer-paper .pitch-equalizer-game .knob-freq-container #dial, .pitch-equalizer-container .pitch-equalizer-paper .pitch-equalizer-game .knob-freq-container .check {
         margin: 0 auto; }
+
+.home-page-content {
+  width: 60%;
+  align-self: center;
+  padding-left: 100px; }
 
 .accountSignIn {
   display: flex;

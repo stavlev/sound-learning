@@ -9,8 +9,8 @@ import * as routes from '../constants/routes';
 import { Button, TextField, Typography } from 'material-ui';
 
 const SignUpPage = ({ history }) =>
-    <div>
-        <Typography type="display2" gutterBottom>
+    <div className="sign-up-page">
+        <Typography type="display2" className="sign-up-title" gutterBottom>
             Sign Up
         </Typography>
         <SignUpForm history={history}/>
@@ -81,9 +81,9 @@ class SignUpForm extends Component {
             username === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="sign-up-form">
                 <TextField
-                    id="Full Name"
+                    className="full-name"
                     label="Full Name"
                     placeholder="Full Name"
                     margin="normal"
@@ -92,7 +92,7 @@ class SignUpForm extends Component {
                 />
                 <br/>
                 <TextField
-                    id="Email Address"
+                    className="email"
                     label="Email Address"
                     placeholder="Email Address"
                     margin="normal"
@@ -101,7 +101,7 @@ class SignUpForm extends Component {
                 />
                 <br/>
                 <TextField
-                    id="password-input"
+                    className="password-input"
                     label="Password"
                     type="password"
                     autoComplete="current-password"
@@ -111,7 +111,7 @@ class SignUpForm extends Component {
                 />
                 <br/>
                 <TextField
-                    id="confirm-password-input"
+                    className="confirm-password-input"
                     label="Confirm Password"
                     type="password"
                     autoComplete="current-password"
@@ -120,7 +120,7 @@ class SignUpForm extends Component {
                     onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
                 />
                 <br/><br/>
-                <Button variant="raised" color="primary" disabled={isInvalid} type="submit">
+                <Button variant="raised" className="sign-up-button" color="primary" disabled={isInvalid} type="submit">
                     Sign Up
                 </Button>
                 <br/>

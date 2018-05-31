@@ -5,11 +5,12 @@ import {SignUpLink} from './SignUp';
 import {Button, TextField, Typography} from 'material-ui';
 
 const SignInPage = ({history}) =>
-    <div>
-        <Typography type="display2" gutterBottom>
+    <div className="sign-in-page">
+        <Typography type="display2" className="sign-in-title" gutterBottom>
             Sign In
         </Typography>
         <SignInForm history={history}/>
+        <br/>
         <SignUpLink/>
     </div>
 
@@ -55,9 +56,9 @@ class SignInForm extends Component {
             email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} className="sign-in-form">
                 <TextField
-                    id="Email Address"
+                    className="email"
                     label="Email Address"
                     placeholder="Email Address"
                     margin="normal"
@@ -66,7 +67,7 @@ class SignInForm extends Component {
                 />
                 <br/>
                 <TextField
-                    id="password-input"
+                    className="password-input"
                     label="Password"
                     type="password"
                     autoComplete="current-password"
@@ -75,7 +76,7 @@ class SignInForm extends Component {
                     onChange={event => this.setState(byPropKey('password', event.target.value))}
                 />
                 <br/><br/>
-                <Button variant="raised" color="primary" disabled={isInvalid} type="submit">
+                <Button variant="raised" className="sign-in-button" color="primary" disabled={isInvalid} type="submit">
                     Sign In
                 </Button>
                 <br/>

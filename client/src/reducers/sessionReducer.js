@@ -21,7 +21,7 @@ function sessionReducer(state = INITIAL_STATE, action) {
         case 'DB_USER_SET': {
             return applySetdbUser(state, action);
         }
-        default : return state;
+        default: return state;
     }
 }
 

@@ -1,8 +1,33 @@
-.pitch-sort-game .pitch-paper {
-  height: 100px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center; }
+.pitch-sort-game-container {
+  height: 100%;
+  display: flex; }
+  .pitch-sort-game-container .pitch-sort-game-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px; }
+    .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game {
+      min-width: 1100px;
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+      cursor: pointer; }
+      .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game .pitch-component-list {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center; }
+        .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game .pitch-component-list .pitch-paper {
+          height: 100px;
+          width: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center; }
+
+.pitch-sort-game:hover {
+  color: azure; }
+
+.pitch-button {
+  margin: 22px !important;
+  border-radius: 0 !important; }
 
 /*# sourceMappingURL=PitchSortGame.css.map */

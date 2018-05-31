@@ -38,7 +38,7 @@ class Layout extends React.Component {
                             <Route exact path={routes.SIGN_IN} component={SignInPage}/>
                             <Route exact path={routes.SIGN_UP} component={SignUpPage}/>
                         </div>
-                        <div>
+                        <div className="game-content">
                             <Route path={routes.PITCH_GETTING_TO_KNOW} component={GettingToKnow}/>
                             <Route path={routes.PITCH_SORT_GAME} component={PitchSortGame}/>
                             <Route path={routes.PITCH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>

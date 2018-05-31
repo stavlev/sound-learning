@@ -23,14 +23,16 @@ html {
   .layout .layout-container {
     height: 100%;
     display: flex;
-    margin-top: 64px;
+    margin-top: 105px;
     flex-direction: row; }
     .layout .layout-container .layout-content {
       flex-grow: 1; }
+    .layout .layout-container .game-content {
+      width: 80%; }
     .layout .layout-container .progress-side-bar-container {
       border-right: 1px solid lightgrey;
       position: relative;
-      top: 45px; }
+      width: 20%; }
       .layout .layout-container .progress-side-bar-container .heading {
         font-size: 0.9375rem;
         font-weight: normal; }
@@ -57,7 +59,6 @@ html {
     margin: auto;
     padding: 30px; }
     .pitch-sort-game-container .pitch-sort-game-paper .pitch-sort-game {
-      min-width: 1100px;
       padding: 20px;
       margin-top: 40px;
       text-align: center;
@@ -89,7 +90,6 @@ html {
     margin: auto;
     padding: 30px; }
     .multi-choice-game-container .multi-choice-game-paper .multi-choice-game {
-      min-width: 1100px;
       padding: 20px;
       margin-top: 40px;
       text-align: center;
@@ -107,20 +107,17 @@ html {
     margin: auto;
     padding: 30px; }
     .memory-game-container .memory-game-paper .memory-game {
-      min-width: 1100px;
-      max-width: 1100px;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       border: dashed lightgrey 1px;
       cursor: pointer; }
       .memory-game-container .memory-game-paper .memory-game .memory-component-list {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: center;
         flex-wrap: wrap; }
         .memory-game-container .memory-game-paper .memory-game .memory-component-list .memory-paper {
-          height: 100px;
-          width: 100px;
+          height: 75px;
+          width: 75px;
           margin: 10px;
           display: flex;
           align-items: center;
@@ -130,7 +127,8 @@ html {
   color: azure; }
 
 .memory-button {
-  margin: 22px !important;
+  width: 40px !important;
+  height: 40px !important;
   border-radius: 0% !important; }
 
 .getting-to-know-container {
@@ -139,13 +137,8 @@ html {
   .getting-to-know-container .getting-to-know-paper {
     height: 500px;
     margin: auto;
-    padding: 30px;
-    min-width: 1100px;
-    max-width: 1100px; }
+    padding: 30px; }
 
-.accountSignIn {
-  display: flex;
-  align-items: baseline; }
 .pitch-equalizer-container {
   height: 100%;
   display: flex; }
@@ -154,7 +147,6 @@ html {
     margin: auto;
     padding: 30px; }
     .pitch-equalizer-container .pitch-equalizer-paper .pitch-equalizer-game {
-      min-width: 1100px;
       padding: 20px;
       margin-top: 40px;
       text-align: center;
@@ -178,5 +170,9 @@ html {
         margin-top: 15px !important; }
       .pitch-equalizer-container .pitch-equalizer-paper .pitch-equalizer-game .knob-freq-container #dial, .pitch-equalizer-container .pitch-equalizer-paper .pitch-equalizer-game .knob-freq-container .check {
         margin: 0 auto; }
+
+.accountSignIn {
+  display: flex;
+  align-items: baseline; }
 
 /*# sourceMappingURL=index.css.map */

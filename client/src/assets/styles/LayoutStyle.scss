@@ -19,17 +19,21 @@
   .layout-container {
     height: 100%;
     display: flex;
-    margin-top: 64px;
+    margin-top: 105px;
     flex-direction: row;
 
     .layout-content {
       flex-grow: 1;
     }
 
+    .game-content {
+      width: 80%;
+    }
+
     .progress-side-bar-container {
       border-right: 1px solid lightgrey;
       position: relative;
-      top: 45px;
+      width: 20%;
 
       .heading {
         font-size: 0.9375rem;

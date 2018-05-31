@@ -8,22 +8,19 @@
     padding: 30px;
 
     .memory-game {
-      min-width: 1100px;
-      max-width: 1100px;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
       border: dashed lightgrey 1px;
       cursor: pointer;
 
       .memory-component-list {
         display: flex;
-        justify-content: space-evenly;
-        align-items: center;
+        justify-content: center;
         flex-wrap: wrap;
 
         .memory-paper {
-          height: 100px;
-          width: 100px;
+          height: 75px;
+          width: 75px;
           margin: 10px;
           display: flex;
           align-items: center;
@@ -39,6 +36,7 @@
 }
 
 .memory-button {
-  margin: 22px !important;
+  width: 40px !important;
+  height: 40px !important;
   border-radius: 0% !important;
 }

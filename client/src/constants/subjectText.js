@@ -6,15 +6,15 @@ export const PITCH_GAME_TEXT =
     '\n' +
     'Pitch depends on the frequency of a sound wave.\n' +
     'Frequency is the number of wavelengths that fit into one unit of time.\n' +
-    'Even though the singer sang the same note, because the sounds had different frequencies, we heard them as different. \n' +
-    'Frequencies are measured in hertz. \n' +
-    'One hertz is equal to one cycle of compression and rarefaction per second. \n' +
-    'High sounds have high frequencies and low sounds have low frequencies. \n' +
-    'Thunder has a frequency of only 50 hertz, while a whistle can have a frequency of 1,000 hertz.\n' +
-    '\n' +
-    'The human ear is able to hear frequencies of 20 to 20,000 hertz.\n' +
-    'Some animals can hear sounds at even higher frequencies.\n' +
-    'The reason we cannot hear dog whistles, while they can, is because the frequency of the whistle is too high or too low be processed by our ears.';
+    'Even though the singer sang the same note, because the sounds had different frequencies, we heard them as different. \n';
+export const LOUDNESS_GAME_TEXT = 'Loudness, in acoustics, attribute of sound that determines the intensity of auditory sensation produced. The loudness of sound as perceived by human ears is roughly proportional to the logarithm of sound intensity: when the intensity is very small, the sound is not audible; when it is too great, it becomes painful and dangerous to the ear.'
+export const CONVOLVER_GAME_TEXT = 'A Convolution Reverb consists of a recorded sample (called an Impulse Response or "IR") of an acoustic space to excitation from a signal such as a sweep tone, starter gun, or snare drum crack, and the effect on the space of that signal after it has been removed and usably transformed by the convolution processor. Convolution reverbs essentially record and process the reverberant behavior unique to a real acoustic space.'
+export const WAVE_LENGTH_GAME_TEXT = 'The wavelength of sound is not directly sensed, but indirect evidence is found in the correlation of the size of musical instruments with their pitch. Small instruments, such as a piccolo, typically make high-pitch sounds, while large instruments, such as a tuba, typically make low-pitch sounds. High pitch means small wavelength, and the size of a musical instrument is directly related to the wavelengths of sound it produces.'
+export const WAVE_SHAPE_GAME_TEXT = 'The shape of the wave (how the voltage changes over time) determines what the signal actually sounds like, or its timbre.  A simple tone can sound soft, smooth, harsh, buzzy, like a beep, like a bell, etc. depending on its shape.'
 
 
 export const PITCH_GAME_HEADER = 'Pitch';
+export const LOUDNESS_GAME_HEADER = 'Loudness';
+export const CONVOLVER_GAME_HEADER = 'Convolution Reverb';
+export const WAVE_LENGTH_GAME_HEADER = 'Wavelength';
+export const WAVE_SHAPE_GAME_HEADER = 'Wave Shape';

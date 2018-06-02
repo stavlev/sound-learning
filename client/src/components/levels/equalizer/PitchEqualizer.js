@@ -13,6 +13,9 @@ import {startGame,
         onTryAgain
 } from "./actionCreators";
 import Snackbar from "material-ui/es/Snackbar/Snackbar";
+import {compose} from 'recompose';
+import {Link, withRouter} from "react-router-dom";
+import {getNextLevelRoute, nextLevel} from "../../../helper_functions/levelDetector";
 
 export class PitchEqualizer extends React.Component {
     constructor(props) {
@@ -26,8 +29,10 @@ export class PitchEqualizer extends React.Component {
 
     render() {
         const {dispatch, audioCtx, knobStartFrequency, destFrequency, isGameStarted,
-                isGameFinished, knobOscillatorNode, destOscillatorNode, isDestPlaying, isKnobPlaying,
-                isTryAgain} = this.props;
+               isGameFinished, knobOscillatorNode, destOscillatorNode, isDestPlaying, isKnobPlaying,
+               isTryAgain, match, authUser, onSetdbUser, updateLevels} = this.props;
+
+        let nextLevelRoute = getNextLevelRoute(match.url);
 
         return (
             <div className="pitch-equalizer-container">
@@ -136,9 +141,20 @@ export class PitchEqualizer extends React.Component {
                                     </div>
                                 </div>
                                 :
-                                <Typography type="display3">
-                                    Great! You nailed it :)
-                                </Typography>
+                                <div>
+                                    <Typography type="display1">
+                                        Great! You nailed it!
+                                    </Typography>
+                                    <br />
+                                    <Typography type="title"
+                                                onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
+                                                component={Link}
+                                                to={nextLevelRoute}
+                                    >
+                                        <b>Next Level</b>
+                                    </Typography>
+                                </div>
+
                         }
                     </div>
                 </Paper>
@@ -164,7 +180,8 @@ PitchEqualizer.propTypes = {
     isGameFinished: PropTypes.bool,
     isDestPlaying: PropTypes.bool,
     isKnobPlaying: PropTypes.bool,
-    isTryAgain: PropTypes.bool
+    isTryAgain: PropTypes.bool,
+    authUser: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
@@ -178,8 +195,9 @@ const mapStateToProps = (state) => {
         isGameFinished: state.pitchEqualizer.isGameFinished,
         isKnobPlaying: state.pitchEqualizer.isKnobPlaying,
         isDestPlaying: state.pitchEqualizer.isDestPlaying,
-        isTryAgain: state.pitchEqualizer.isTryAgain
+        isTryAgain: state.pitchEqualizer.isTryAgain,
+        authUser: state.sessionState.authUser
     };
 };
 
-export default connect(mapStateToProps)(PitchEqualizer);
+export default compose(withRouter, connect(mapStateToProps))(PitchEqualizer);

@@ -7,6 +7,9 @@ import {Typography, Paper} from 'material-ui';
 import {startSortGame,
         onSortEnd,
         finishSortGame} from "./actionCreators";
+import {Link, withRouter} from "react-router-dom";
+import {getNextLevelRoute, nextLevel} from "../../../helper_functions/levelDetector";
+import {compose} from "recompose";
 
 const SortableItem = SortableElement(({audioCtx, value, color, oscillatorNode, isPlaying, id, dispatch}) =>
     <PitchComponent key={id}
@@ -48,7 +51,10 @@ export class PitchSortGame extends React.Component {
     }
 
     render() {
-        const {dispatch, audioCtx, frequencies, isGameStarted, isGameFinished} = this.props;
+        const {dispatch, audioCtx, frequencies, isGameStarted, isGameFinished,
+               match, authUser, onSetdbUser, updateLevels} = this.props;
+
+        let nextLevelRoute = getNextLevelRoute(match.url);
 
         return (
             <div className="pitch-sort-game-container">
@@ -93,9 +99,19 @@ export class PitchSortGame extends React.Component {
                                               }}
                                               />
                                 :
-                                <Typography type="display1">
-                                    Great! You nailed it :)
-                                </Typography>
+                                <div>
+                                    <Typography type="display1">
+                                        Great! You nailed it!
+                                    </Typography>
+                                    <br />
+                                    <Typography type="title"
+                                                onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
+                                                component={Link}
+                                                to={nextLevelRoute}
+                                    >
+                                        <b>Next Level</b>
+                                    </Typography>
+                                </div>
                         }
                     </div>
                 </Paper>
@@ -128,7 +144,8 @@ PitchSortGame.propTypes = {
         oscillatorNode: PropTypes.object
     })),
     isGameStarted: PropTypes.bool,
-    isGameFinished: PropTypes.bool
+    isGameFinished: PropTypes.bool,
+    authUser: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
@@ -136,8 +153,9 @@ const mapStateToProps = (state) => {
         audioCtx: state.sortGame.audioCtx,
         frequencies: state.sortGame.frequencies,
         isGameStarted: state.sortGame.isGameStarted,
-        isGameFinished: state.sortGame.isGameFinished
+        isGameFinished: state.sortGame.isGameFinished,
+        authUser: state.sessionState.authUser
     };
 };
 
-export default connect(mapStateToProps)(PitchSortGame);
+export default compose(withRouter, connect(mapStateToProps))(PitchSortGame);

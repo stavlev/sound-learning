@@ -3,33 +3,16 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {Paper, Typography} from 'material-ui';
-import {db} from "../../../firebase/index";
 import { compose } from 'recompose';
 import { Link, withRouter } from 'react-router-dom';
 import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
-import {detectLevel, getNextLevelRoute} from '../../../helper_functions/levelDetector';
+import {detectLevel, getNextLevelRoute, nextLevel} from '../../../helper_functions/levelDetector';
+
 export class MemoryGame extends Component {
-
-
-    nextLevel(){
-        const {authUser, onSetdbUser, updateLevels, match, dbUser} = this.props;
-        let levelSublevel = detectLevel(match.url);
-
-        db.getUser(authUser.uid).then(function(snapshot) {
-
-            let user = snapshot.val();
-
-            if(levelSublevel[0] === user.level && levelSublevel[1] === user.subLevel){
-                db.nextLevel(authUser.uid);
-                updateLevels(user.level, user.subLevel + 1);
-                onSetdbUser(user);
-            }
-        });
-    }
-
     render() {
-        const {numberOfTries, isGameStarted, isGameFinished, match} = this.props;
+        const {numberOfTries, isGameStarted, isGameFinished, match,
+            authUser, onSetdbUser, updateLevels} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
         let nextLevelSubLevelNum = detectLevel(match.url);
@@ -94,12 +77,19 @@ export class MemoryGame extends Component {
                                 : (isGameStarted && !isGameFinished) ?
                                 <TilesBoard/>
                                 :
-                                <Typography type="display1" onClick={() => {
-                                            this.nextLevel();
-                                            }}
-                                            component={Link} to={nextLevelRoute}>
-                                    Great! You nailed it, Click here to advance to the next level
-                                </Typography>
+                                <div>
+                                    <Typography type="display1">
+                                        Great! You nailed it!
+                                    </Typography>
+                                    <br />
+                                    <Typography type="title"
+                                                onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
+                                                component={Link}
+                                                to={nextLevelRoute}
+                                    >
+                                        <b>Next Level</b>
+                                    </Typography>
+                                </div>
                         }
                     </div>
                 </Paper>
@@ -111,6 +101,7 @@ MemoryGame.propTypes = {
     isGameStarted: PropTypes.bool,
     isGameFinished: PropTypes.bool,
     numberOfTries: PropTypes.number,
+    authUser: PropTypes.object
 };
 
 function mapStateToProps(state) {
@@ -118,17 +109,16 @@ function mapStateToProps(state) {
         isGameStarted: state.memoryGame.isGameStarted,
         isGameFinished: state.memoryGame.isGameFinished,
         numberOfTries: state.memoryGame.numberOfTries,
-        authUser: state.sessionState.authUser,
-        dbUser: state.sessionState.dbUser,
+        authUser: state.sessionState.authUser
     }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         startGame: actions.startGame,
         onSetdbUser: actions.onSetdbUser,
         updateLevels: actions.updateLevels,
     }, dispatch);
-}
+};
 
-export default compose(withRouter,connect(mapStateToProps, mapDispatchToProps))(MemoryGame);
+export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(MemoryGame);

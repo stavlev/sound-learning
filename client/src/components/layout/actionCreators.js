@@ -4,7 +4,7 @@ export function updateLevels(level, subLevel) {
     return {
         type: types.UPDATE_LEVELS,
         level,
-        subLevel,
+        subLevel
     }
 }
 

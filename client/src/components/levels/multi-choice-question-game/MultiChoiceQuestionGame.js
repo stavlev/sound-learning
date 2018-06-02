@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {Typography, Paper, Radio, RadioGroup, FormControlLabel} from 'material-ui';
 import {startMultiChoiceGame, onAnswerClick} from "./actionCreators";
 import {connect} from "react-redux";
+import {compose} from 'recompose';
+import {Link, withRouter} from "react-router-dom";
+import {getNextLevelRoute, nextLevel} from "../../../helper_functions/levelDetector";
 
 export class MultiChoiceQuestionGame extends React.Component {
     constructor(props) {
@@ -10,7 +13,10 @@ export class MultiChoiceQuestionGame extends React.Component {
     }
 
     render() {
-        const {dispatch, /*audioCtx, */question, answers, isGameStarted, isGameFinished} = this.props;
+        const {dispatch, /*audioCtx,*/ question, answers, isGameStarted, isGameFinished,
+               match, authUser, onSetdbUser, updateLevels} = this.props;
+
+        let nextLevelRoute = getNextLevelRoute(match.url);
 
         return (
             <div className="multi-choice-game-container">
@@ -42,9 +48,21 @@ export class MultiChoiceQuestionGame extends React.Component {
                                     }
                                 </RadioGroup>
                                 :
-                                <Typography type="display1">
-                                    Great! You nailed it :)
-                                </Typography>
+                                <div>
+                                    <Typography type="display1">
+                                        Great! You nailed it!
+                                    </Typography>
+                                    <br />
+                                    <Typography type="title"
+                                                onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
+                                                component={Link}
+                                                to={nextLevelRoute}
+
+                                    >
+                                        <b>Next Level</b>
+                                    </Typography>
+                                </div>
+
                         }
                     </div>
                 </Paper>
@@ -66,6 +84,7 @@ MultiChoiceQuestionGame.propTypes = {
     })),
     isGameStarted: PropTypes.bool,
     isGameFinished: PropTypes.bool,
+    authUser: PropTypes.object
 };
 
 const mapStateToProps = (state) => {
@@ -74,8 +93,9 @@ const mapStateToProps = (state) => {
         question: state.multiChoiceGame.question,
         answers: state.multiChoiceGame.answers,
         isGameStarted: state.multiChoiceGame.isGameStarted,
-        isGameFinished: state.multiChoiceGame.isGameFinished
+        isGameFinished: state.multiChoiceGame.isGameFinished,
+        authUser: state.sessionState.authUser
     };
 };
 
-export default connect(mapStateToProps)(MultiChoiceQuestionGame);
+export default compose(withRouter, connect(mapStateToProps))(MultiChoiceQuestionGame);

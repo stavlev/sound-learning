@@ -1,5 +1,6 @@
 import * as routes from '../constants/routes';
 import * as positions from '../constants/levelPositions';
+import {db} from '../firebase/index';
 
 export function detectLevel(url){
     let levelSubLevel = [];
@@ -115,7 +116,6 @@ export function detectLevel(url){
 }
 
 export function detectRoute(level, sublevel){
-
     let route = '';
 
     if (level === positions.PITCH_LEVELS && sublevel === positions.PITCH_GETTING_TO_KNOW){
@@ -215,3 +215,16 @@ export function getNextLevelRoute(url){
     return route;
 }
 
+export const nextLevel = (authUser, onSetdbUser, updateLevels, match) => {
+    let levelSublevel = detectLevel(match.url);
+    db.getUser(authUser.uid).then(function(snapshot) {
+
+        let user = snapshot.val();
+
+        if (levelSublevel[0] === user.level && levelSublevel[1] === user.subLevel){
+            db.nextLevel(authUser.uid);
+            updateLevels(user.level, user.subLevel + 1);
+            onSetdbUser(user);
+        }
+    });
+};

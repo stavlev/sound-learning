@@ -5,3 +5,4 @@ export const TOGGLE_IS_WAITING = 'TOGGLE_IS_WAITING';
 export const INCREMENT_TRIES = 'INCREMENT_TRIES';
 export const DB_USER_SET = 'DB_USER_SET';
 export const UPDATE_LEVELS = 'UPDATE_LEVELS';
+export const RESET_LEVELS = 'RESET_LEVELS';

@@ -4,11 +4,13 @@ import ExpansionPanel, {ExpansionPanelSummary, ExpansionPanelDetails } from 'mat
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import {Lock, LockOpen} from 'material-ui-icons';
 import { compose } from 'recompose';
+import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import {Typography, List, ListItem, ListItemSecondaryAction, ListItemText, IconButton} from 'material-ui';
 import { Link, withRouter } from 'react-router-dom';
 import {LEVELS as levels} from "../../constants/levels";
 import * as routes from "../../constants/routes";
+import * as actions from "./actionCreators";
 
 class ProgressSideBar extends React.Component {
 
@@ -18,7 +20,7 @@ class ProgressSideBar extends React.Component {
 
     render() {
 
-        const {levels} = this.props;
+        const {levels, resetLevels} = this.props;
 
         return (
             <div className="progress-side-bar-container">
@@ -35,6 +37,7 @@ class ProgressSideBar extends React.Component {
                                         level.subLevels.map(subLevel =>
                                             <ListItem key={subLevel.key}
                                                       className="list-item"
+                                                      onClick={() => {resetLevels()}}
                                                       component={Link} to={subLevel.isEnabled ? subLevel.routeTo : routes.HOME}
                                                       disabled={!subLevel.isEnabled}>
                                                 <ListItemText primary={subLevel.header} />
@@ -87,14 +90,14 @@ function mapStateToProps(state) {
     };
 }
 
-/*function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        updateLevels: actions.updateLevels,
+        resetLevels: actions.resetLevels,
     }, dispatch);
-}*/
+}
 
 export default compose(withRouter,
-    connect(mapStateToProps))
+    connect(mapStateToProps,mapDispatchToProps))
     (ProgressSideBar);
 
 //export default withRouter(ProgressSideBar);

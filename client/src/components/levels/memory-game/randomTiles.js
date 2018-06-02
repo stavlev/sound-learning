@@ -2,10 +2,10 @@ import _ from "lodash";
 
 var _tiles = [];
 
-function generateTiles() {
+function generateTiles(num) {
     let images = [];
 
-    for (let i = 1; i < 9; i++) {
+    for (let i = 1; i <= num ; i++) {
         images.push(
             {
                 node: null,
@@ -19,8 +19,8 @@ function generateTiles() {
     _tiles = _.shuffle(_.concat(images, images));
 }
 
-function getTiles() {
-    generateTiles();
+function getTiles(num) {
+    generateTiles(num);
     return _tiles;
 }
 

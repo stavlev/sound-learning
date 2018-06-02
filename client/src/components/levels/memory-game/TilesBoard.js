@@ -2,13 +2,15 @@ import React, {Component} from "react";
 
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
-
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 import _ from "lodash";
 
 import TileComponent from "./TileComponent";
 import * as actions from "./actionCreators";
 import * as gen from "../../oscillator/oscillatorGenerator";
 import * as cache from "../../oscillator/impulseCache";
+import {detectLevel} from "../../../helper_functions/levelDetector";
 
 const randomMaterialColor = require('random-material-color');
 
@@ -60,13 +62,55 @@ export class TilesBoard extends Component {
     }
 
     async onHandleClickTile(tile, index) {
-        const {flipTile, isWaiting, audioCtx} = this.props;
+        const {flipTile, isWaiting, audioCtx, match} = this.props;
 
         if (isWaiting) return;
 
         flipTile(index, tile);
 
-        gen.oscillatorGenerator(audioCtx, tile.multiplier * 100 + 140, 0, '', 0, 0, 0);
+        let level = detectLevel(match.url);
+
+        switch(level[0]){
+            case 1: {
+                gen.oscillatorGenerator(audioCtx, tile.multiplier * 100 + 140, 0, '', 0, 0, 0);
+                break;
+            }
+            case 2: {
+                gen.oscillatorGenerator(audioCtx, 0, 0.15 * tile.multiplier, '', 0, 0, 0);
+                break;
+            }
+            case 3: {
+                gen.oscillatorGenerator(audioCtx, 0, 0, '', 0, 0, tile.multiplier);
+                break;
+            }
+            case 4: {
+                gen.oscillatorGenerator(audioCtx, 0, 0, '', tile.multiplier * 100 + 100, 1, 0);
+                break;
+            }
+            case 5: {
+                switch(tile.multiplier){
+                    case 1: {
+                        gen.oscillatorGenerator(audioCtx, 0, 0, 'sine', 0, 0, 0);
+                        break;
+                    }
+                    case 2: {
+                        gen.oscillatorGenerator(audioCtx, 0, 0, 'square', 0, 0, 0);
+                        break;
+                    }
+                    case 3: {
+                        gen.oscillatorGenerator(audioCtx, 0, 0, 'sawtooth', 0, 0, 0);
+                        break;
+                    }
+                    case 4: {
+                        gen.oscillatorGenerator(audioCtx, 0, 0, 'triangle', 0, 0, 0);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+
+        //gen.oscillatorGenerator(audioCtx, tile.multiplier * 100 + 140, 0, '', 0, 0, 0);
     }
 
     renderTiles() {
@@ -106,4 +150,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TilesBoard);
+export default compose(withRouter,connect(mapStateToProps, mapDispatchToProps))(TilesBoard);

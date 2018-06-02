@@ -6,8 +6,7 @@ import {Paper, Typography} from 'material-ui';
 import {db} from "../../../firebase/index";
 import { compose } from 'recompose';
 import { Link, withRouter } from 'react-router-dom';
-
-    import TilesBoard from "./TilesBoard";
+import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
 import {detectLevel, getNextLevelRoute} from '../../../helper_functions/levelDetector';
 export class MemoryGame extends Component {
@@ -33,6 +32,32 @@ export class MemoryGame extends Component {
         const {numberOfTries, isGameStarted, isGameFinished, match} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
+        let nextLevelSubLevelNum = detectLevel(match.url);
+        let numOfTiles = 0;
+
+        switch (nextLevelSubLevelNum[0]){
+            case 1: {
+                numOfTiles = 8;
+                break;
+            }
+            case 2: {
+                numOfTiles = 6;
+                break;
+            }
+            case 3: {
+                numOfTiles = 4;
+                break;
+            }
+            case 4: {
+                numOfTiles = 8;
+                break;
+            }
+            case 5: {
+                numOfTiles = 4;
+                break;
+            }
+        }
+
 
         return (
             <div className="memory-game-container">
@@ -62,7 +87,7 @@ export class MemoryGame extends Component {
                             !isGameStarted ?
                                 <Typography type="display1"
                                             onClick={() => {
-                                                this.props.startGame();
+                                                this.props.startGame(numOfTiles);
                                             }}>
                                     Start Game
                                 </Typography>

@@ -1,10 +1,10 @@
 import * as types from "./actionTypes";
 import randomTiles from "./randomTiles";
 
-export function startGame() {
+export function startGame(num) {
     return {
         type: types.START_MEMORY_GAME,
-        tiles: randomTiles.getTiles(),
+        tiles: randomTiles.getTiles(num),
         isGameStarted: true,
     }
 }

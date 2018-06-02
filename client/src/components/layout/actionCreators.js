@@ -7,3 +7,9 @@ export function updateLevels(level, subLevel) {
         subLevel,
     }
 }
+
+export function resetLevels() {
+    return {
+        type: types.RESET_LEVELS,
+    }
+}

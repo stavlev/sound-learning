@@ -1,1 +1,2 @@
 export const UPDATE_LEVELS = 'UPDATE_LEVELS';
+export const RESET_LEVELS = 'RESET_LEVELS';

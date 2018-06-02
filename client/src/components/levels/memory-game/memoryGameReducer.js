@@ -97,6 +97,14 @@ export default function memoryGameReducer(state = INITIAL_STATE, action) {
             }
         }
 
+        case types.RESET_LEVELS: {
+            return {
+                ...state,
+                isGameStarted: false,
+                isGameFinished: false,
+            }
+        }
+
         default:
             return state;
     }

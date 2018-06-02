@@ -21,11 +21,12 @@ export const handleSortComponentClick = id => {
     };
 };
 
-export const setDefaultOscillatorNode = (id, frequency) => {
+export const setDefaultOscillatorNode = (id, frequency, level) => {
     return {
         type: ActionTypes.SET_DEFAULT_OSCILLATOR_NODE,
         id: id,
-        frequency: frequency
+        frequency: frequency,
+        level: level
     };
 };
 

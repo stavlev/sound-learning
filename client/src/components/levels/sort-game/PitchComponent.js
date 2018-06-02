@@ -5,18 +5,25 @@ import {PlayArrow, Stop} from "material-ui-icons";
 import {setDefaultOscillatorNode,
         handleSortComponentClick,
 } from "./actionCreators"
+import {connect} from 'react-redux';
+import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import {detectLevel} from "../../../helper_functions/levelDetector";
 
-export default class PitchComponent extends React.Component {
+export class PitchComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        const {dispatch, id, frequency} = props;
+        const {dispatch, id, frequency, match} = props;
 
-        dispatch(setDefaultOscillatorNode(id, frequency));
+        let level = detectLevel(match.url);
+
+        dispatch(setDefaultOscillatorNode(id, frequency, level[0]));
     }
 
     render() {
         const {dispatch, audioCtx, id, isPlaying, color, oscillatorNode} = this.props;
+
 
         return (
             <div>
@@ -51,3 +58,12 @@ PitchComponent.propTypes = {
     frequency: PropTypes.number.isRequired,
     oscillatorNode: PropTypes.object
 };
+
+const mapStateToProps = (state) => {
+    return {
+        audioCtx: state.sortGame.audioCtx,
+        frequencies: state.sortGame.frequencies,
+    };
+};
+
+export default compose(withRouter,connect(mapStateToProps))(PitchComponent);

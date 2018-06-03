@@ -15,13 +15,13 @@ const initialState = {
 
 export default function pitchEqualizerReducer(state = initialState, action) {
     switch (action.type) {
-        case ActionTypes.START_GAME:
+        case ActionTypes.START_PITCH_EQUALIZER_GAME:
             return {
                 ...state,
                 isGameStarted: action.isGameStarted
             };
 
-        case ActionTypes.FINISH_GAME:
+        case ActionTypes.FINISH_PITCH_EQUALIZER_GAME:
             state.knobOscillatorNode.stop();
             state.destOscillatorNode.stop();
 
@@ -30,25 +30,25 @@ export default function pitchEqualizerReducer(state = initialState, action) {
                 isGameFinished: action.isGameFinished
             };
 
-        case ActionTypes.ON_DEST_BUTTON_CLICK:
+        case ActionTypes.ON_DEST_PITCH_EQUALIZER_BUTTON_CLICK:
             return {
                 ...state,
                 isDestPlaying: !state.isDestPlaying
             };
 
-        case ActionTypes.ON_KNOB_BUTTON_CLICK:
+        case ActionTypes.ON_PITCH_EQUALIZER_KNOB_BUTTON_CLICK:
             return {
                 ...state,
                 isKnobPlaying: !state.isKnobPlaying
             };
 
-        case ActionTypes.ON_TRY_AGAIN:
+        case ActionTypes.ON_PITCH_EQUALIZER_TRY_AGAIN:
             return {
                 ...state,
                 isTryAgain: !state.isTryAgain
             };
 
-        case ActionTypes.SET_DEST_OSCILLATOR_NODE: {
+        case ActionTypes.SET_DEST_PITCH_EQUALIZER_OSCILLATOR_NODE: {
             const oscillatorNode = state.audioCtx.createOscillator();
 
             oscillatorNode.type = 'square';
@@ -61,7 +61,7 @@ export default function pitchEqualizerReducer(state = initialState, action) {
             };
         }
 
-        case ActionTypes.SET_KNOB_OSCILLATOR_NODE: {
+        case ActionTypes.SET_KNOB_PITCH_EQUALIZER_OSCILLATOR_NODE: {
             const oscillatorNode = state.audioCtx.createOscillator();
 
             oscillatorNode.type = 'square';

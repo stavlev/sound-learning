@@ -1,0 +1,33 @@
+.loudness-equalizer-container {
+  height: 100%;
+  display: flex; }
+  .loudness-equalizer-container .loudness-equalizer-paper {
+    height: 500px;
+    margin: auto;
+    padding: 30px; }
+    .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game {
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px; }
+      .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .dest-freq-container {
+        display: inline-flex; }
+        .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .dest-freq-container .play-dest-button {
+          border-radius: 0;
+          margin-left: 15px; }
+        .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .dest-freq-container p {
+          align-self: center; }
+      .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container .equalizer-title {
+        display: inline-flex; }
+        .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container .equalizer-title p {
+          align-self: center; }
+        .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container .equalizer-title .play-knob-button {
+          border-radius: 0;
+          margin-left: 15px; }
+      .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container .check {
+        width: 100%;
+        margin-top: 15px !important; }
+      .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container #dial, .loudness-equalizer-container .loudness-equalizer-paper .loudness-equalizer-game .equalizer-container #slider .check {
+        margin: 0 auto; }
+
+/*# sourceMappingURL=LoudnessEqualizer.css.map */

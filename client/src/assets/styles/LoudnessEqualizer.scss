@@ -1,13 +1,13 @@
-.pitch-equalizer-container {
+.loudness-equalizer-container {
     height: 100%;
     display: flex;
 
-  .pitch-equalizer-paper {
+  .loudness-equalizer-paper{
     height: 500px;
     margin: auto;
     padding: 30px;
 
-    .pitch-equalizer-game {
+    .loudness-equalizer-game {
       padding: 20px;
       margin-top: 40px;
       text-align: center;
@@ -26,8 +26,8 @@
         }
       }
 
-      .knob-freq-container {
-        .knob-title {
+      .equalizer-container {
+        .equalizer-title {
           display: inline-flex;
 
           p {
@@ -40,13 +40,20 @@
           }
         }
 
-        .check {
-          width: 100%;
+        .equalizer-content {
+          display: flex;
+          justify-content: center;
+
+          .slider-container, .knob-container {
+              margin: 15px;
+          }
         }
 
-        #dial, .check {
-          margin: 10px auto;
-        }
+        .check {
+          width: 100%;
+          margin: 0 auto;
+          margin-top: 15px !important;
+      }
       }
     }
   }

@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route,} from 'react-router-dom';
 import logo from "../../assets/Musiclingo.png";
 import {AppBar, Toolbar} from 'material-ui';
 import ProgressSideBar from './ProgressSideBar';
-import PitchEqualizer from "../levels/equalizer/PitchEqualizer";
+import PitchEqualizer from "../levels/pitch-equalizer/PitchEqualizer";
 import PitchSortGame from "../levels/sort-game/PitchSortGame";
 import MultiChoiceQuestionGame from "../levels/multi-choice-question-game/MultiChoiceQuestionGame";
 import MemoryGame from "../levels/memory-game/MemoryGame"
@@ -17,6 +17,7 @@ import Navigation from "../../authentication/Navigation";
 import GettingToKnow from "../getting-to-know/GettingToKnow";
 import HomePage from "../home-page/HomePage";
 import * as cache from "../oscillator/impulseCache";
+import LoudnessEqualizer from "../levels/loudness-equalizer/LoudnessEqualizer";
 
 class Layout extends React.Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class Layout extends React.Component {
                                     <Route path={routes.LOUDNESS_SORT_GAME} component={PitchSortGame}/>
                                     <Route path={routes.LOUDNESS_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                                     <Route path={routes.LOUDNESS_MEMORY_GAME} component={MemoryGame}/>
-                                    <Route path={routes.LOUDNESS_EQUALIZER} component={MemoryGame}/>
+                                    <Route path={routes.LOUDNESS_EQUALIZER} component={LoudnessEqualizer}/>
 
                                     <Route path={routes.CONVOLVER_GETTING_TO_KNOW} component={GettingToKnow}/>
                                     <Route path={routes.CONVOLVER_SORT_GAME} component={PitchSortGame}/>

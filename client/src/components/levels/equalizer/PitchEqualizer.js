@@ -51,7 +51,7 @@ export class PitchEqualizer extends React.Component {
                     <div className="pitch-equalizer-game">
                         {
                             !isGameStarted ?
-                                <Typography type="display3"
+                                <Typography type="display1"
                                             onClick={() => dispatch(startGame())}>
                                     Start Game
                                 </Typography>

@@ -34,7 +34,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                             !isGameStarted ?
                                 <Typography type="display1"
                                             onClick={() => {
-                                                dispatch(startMultiChoiceGame());
+                                                dispatch(startMultiChoiceGame(match.url));
                                             }}>
                                     Show answers
                                 </Typography>

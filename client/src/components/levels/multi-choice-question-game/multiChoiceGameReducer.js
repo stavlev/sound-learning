@@ -1,6 +1,8 @@
 import * as ActionTypes from './actionTypes';
 import shuffle from "shuffle-array";
 import uuidV4 from 'uuid/v4';
+import {detectLevel} from "../../../helper_functions/levelDetector";
+import {QUESTION_FOUR, QUESTION_ONE, QUESTION_TWO} from "../../../constants/questionsAnswers";
 
 const initialState = {
     /*audioCtx: new (window.AudioContext || window.webkitAudioContext)(),*/
@@ -17,11 +19,42 @@ const initialState = {
 
 export default function multiChoiceGameReducer(state = initialState, action) {
     switch (action.type) {
-        case ActionTypes.START_MULTI_CHOICE_GAME:
+        case ActionTypes.START_MULTI_CHOICE_GAME: {
+
+            let level = detectLevel(action.url);
+            let questionTmp;
+            let answersTmp;
+
+            switch(level[0]){
+                case 1: {
+                    questionTmp = QUESTION_ONE.question;
+                    answersTmp = QUESTION_ONE.answers;
+                    break;
+                }
+                case 2: {
+                    questionTmp = QUESTION_TWO.question;
+                    answersTmp = QUESTION_TWO.answers;
+                    break;
+                }
+                case 4: {
+                    questionTmp = QUESTION_FOUR.question;
+                    answersTmp = QUESTION_FOUR.answers;
+                    break;
+                }
+                default: {
+                    questionTmp = QUESTION_ONE.question;
+                    answersTmp = QUESTION_ONE.answers;
+                    break;
+                }
+            }
+
             return {
                 ...state,
-                isGameStarted: action.isGameStarted
+                isGameStarted: action.isGameStarted,
+                question: questionTmp,
+                answers: answersTmp,
             };
+        }
 
         case ActionTypes.ON_ANSWER_CLICK: {
             const selectedAnswer = state.answers.find(x => x.id === action.id);
@@ -30,6 +63,14 @@ export default function multiChoiceGameReducer(state = initialState, action) {
                 ...state,
                 isGameFinished: selectedAnswer.isCorrect
             };
+        }
+
+        case ActionTypes.RESET_LEVELS: {
+            return {
+                ...state,
+                isGameStarted: false,
+                isGameFinished: false,
+            }
         }
 
         default:

@@ -1,9 +1,10 @@
 import * as ActionTypes from './actionTypes';
 
-export const startMultiChoiceGame = () => {
+export const startMultiChoiceGame = (url) => {
     return {
         type: ActionTypes.START_MULTI_CHOICE_GAME,
-        isGameStarted: true
+        isGameStarted: true,
+        url: url
     };
 };
 

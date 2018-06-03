@@ -8,8 +8,9 @@ import {startSortGame,
         onSortEnd,
         finishSortGame} from "./actionCreators";
 import {Link, withRouter} from "react-router-dom";
-import {getNextLevelRoute, nextLevel} from "../../../helper_functions/levelDetector";
+import {getNextLevelRoute, nextLevel, detectLevel} from "../../../helper_functions/levelDetector";
 import {compose} from "recompose";
+import * as text from "../../../constants/levelText";
 
 const SortableItem = SortableElement(({audioCtx, value, color, oscillatorNode, isPlaying, id, dispatch}) =>
     <PitchComponent key={id}
@@ -55,6 +56,23 @@ export class PitchSortGame extends React.Component {
                match, authUser, onSetdbUser, updateLevels} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
+        let nextLevelSubLevelNum = detectLevel(match.url);
+        let textLevel = '';
+
+        switch (nextLevelSubLevelNum[0]){
+            case 1: {
+                textLevel = text.PITCH_MEMORY_GAME;
+                break;
+            }
+            case 2: {
+                textLevel = text.LOUDNESS_MEMORY_GAME;
+                break;
+            }
+            default: {
+                textLevel = text.PITCH_MEMORY_GAME;
+                break;
+            }
+        }
 
         return (
             <div className="pitch-sort-game-container">
@@ -64,7 +82,7 @@ export class PitchSortGame extends React.Component {
                     </Typography>
                     <br/>
                     <Typography type="headline">
-                        Sort the given sounds according to their frequency, placing the lower sounds to the left.
+                        {textLevel}
                     </Typography>
                     <Typography type="title" component="p">
                         Click each button to play/stop the sound.
@@ -72,7 +90,7 @@ export class PitchSortGame extends React.Component {
                     </Typography>
                     <br/>
                     <Typography type="subheading" component="p">
-                        Take as much time as you need to distinguish the different frequencies :)
+                        Take as much time as you need :)
                     </Typography>
                     <div className="pitch-sort-game">
                         {

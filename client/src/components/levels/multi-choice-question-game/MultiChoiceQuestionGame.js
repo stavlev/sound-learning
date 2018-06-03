@@ -5,7 +5,8 @@ import {startMultiChoiceGame, onAnswerClick} from "./actionCreators";
 import {connect} from "react-redux";
 import {compose} from 'recompose';
 import {Link, withRouter} from "react-router-dom";
-import {getNextLevelRoute, nextLevel} from "../../../helper_functions/levelDetector";
+import {getNextLevelRoute, nextLevel, detectLevel} from "../../../helper_functions/levelDetector";
+import * as text from "../../../constants/questionsAnswers";
 
 export class MultiChoiceQuestionGame extends React.Component {
     constructor(props) {
@@ -17,6 +18,31 @@ export class MultiChoiceQuestionGame extends React.Component {
                match, authUser, onSetdbUser, updateLevels} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
+        let nextLevelSubLevelNum = detectLevel(match.url);
+        let textLevel = '';
+
+        switch (nextLevelSubLevelNum[0]){
+            case 1: {
+                textLevel = text.QUESTION_ONE.question.text;
+                break;
+            }
+            case 2: {
+                textLevel = text.QUESTION_TWO.question.text;
+                break;
+            }
+            case 3: {
+                textLevel = text.QUESTION_ONE.question.text;
+                break;
+            }
+            case 4: {
+                textLevel = text.QUESTION_FOUR.question.text;
+                break;
+            }
+            case 5: {
+                textLevel = text.QUESTION_ONE.question.text;
+                break;
+            }
+        }
 
         return (
             <div className="multi-choice-game-container">
@@ -26,7 +52,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                     </Typography>
                     <br/>
                     <Typography type="headline">
-                        {question.text}
+                        {textLevel}
                     </Typography>
                     <br/>
                     <div className="multi-choice-game">

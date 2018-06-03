@@ -76,7 +76,7 @@ export class TilesBoard extends Component {
                 break;
             }
             case 2: {
-                gen.oscillatorGenerator(audioCtx, 0, 0.15 * tile.multiplier, '', 0, 0, 0);
+                gen.oscillatorGenerator(audioCtx, 0, 0.2 * tile.multiplier, '', 0, 0, 0);
                 break;
             }
             case 3: {

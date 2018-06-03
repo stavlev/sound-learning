@@ -8,6 +8,7 @@ import { Link, withRouter } from 'react-router-dom';
 import TilesBoard from "./TilesBoard";
 import * as actions from './actionCreators';
 import {detectLevel, getNextLevelRoute, nextLevel} from '../../../helper_functions/levelDetector';
+import * as text from "../../../constants/levelText";
 
 export class MemoryGame extends Component {
     render() {
@@ -17,26 +18,32 @@ export class MemoryGame extends Component {
         let nextLevelRoute = getNextLevelRoute(match.url);
         let nextLevelSubLevelNum = detectLevel(match.url);
         let numOfTiles = 0;
+        let textLevel = '';
 
         switch (nextLevelSubLevelNum[0]){
             case 1: {
-                numOfTiles = 8;
+                numOfTiles = 7;
+                textLevel = text.PITCH_MEMORY_GAME;
                 break;
             }
             case 2: {
-                numOfTiles = 6;
+                numOfTiles = 5;
+                textLevel = text.LOUDNESS_MEMORY_GAME;
                 break;
             }
             case 3: {
                 numOfTiles = 4;
+                textLevel = text.CONVOLVER_MEMORY_GAME;
                 break;
             }
             case 4: {
-                numOfTiles = 8;
+                numOfTiles = 7;
+                textLevel = text.WAVELENGTH_MEMORY_GAME;
                 break;
             }
             case 5: {
                 numOfTiles = 4;
+                textLevel = text.WAVE_SHAPE_MEMORY_GAME;
                 break;
             }
         }
@@ -50,15 +57,14 @@ export class MemoryGame extends Component {
                     </Typography>
                     <br/>
                     <Typography type="headline">
-                        Find all the equal frequencies!
+                        Find all the equal tiles!
                     </Typography>
                     <Typography type="title" component="p">
-                        Click each tile to play the sound.
-                        Click on another tile that you think has the same frequency.
+                        {textLevel}
                     </Typography>
                     <br/>
                     <Typography type="subheading" component="p">
-                        Take as much time as you need to match the different frequencies :)
+                        Take as much time as you need  :)
                     </Typography>
                     <br/><br/>
                     <Typography type="subheading" component="p">

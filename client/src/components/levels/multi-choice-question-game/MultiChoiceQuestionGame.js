@@ -14,14 +14,16 @@ export class MultiChoiceQuestionGame extends React.Component {
     }
 
     render() {
-        const {dispatch, /*audioCtx,*/ question, answers, isGameStarted, isGameFinished,
-               match, authUser, onSetdbUser, updateLevels} = this.props;
+        const {
+            dispatch, answers, isGameStarted, isGameFinished,
+            match, authUser, onSetdbUser, updateLevels
+        } = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
         let nextLevelSubLevelNum = detectLevel(match.url);
         let textLevel = '';
 
-        switch (nextLevelSubLevelNum[0]){
+        switch (nextLevelSubLevelNum[0]) {
             case 1: {
                 textLevel = text.QUESTION_ONE.question.text;
                 break;
@@ -68,8 +70,11 @@ export class MultiChoiceQuestionGame extends React.Component {
                                 <RadioGroup name="answers-group"
                                             onChange={(event) => dispatch(onAnswerClick(event.target.value))}>
                                     {
-                                        answers.map(({id, text}) => (
-                                            <FormControlLabel value={id} control={<Radio />} label={text} />
+                                        answers.map(({id, text, wasSelected, isCorrect}) => (
+                                            <FormControlLabel value={id} label={text}
+                                                              control={<Radio
+                                                                  style={{color: !wasSelected ? 'default' : (isCorrect ? 'green' : 'red')}}/>}
+                                            />
                                         ))
                                     }
                                 </RadioGroup>
@@ -78,7 +83,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                                     <Typography type="display1">
                                         Great! You nailed it!
                                     </Typography>
-                                    <br />
+                                    <br/>
                                     <Typography type="title"
                                                 onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
                                                 component={Link}
@@ -107,6 +112,7 @@ MultiChoiceQuestionGame.propTypes = {
         id: PropTypes.string,
         text: PropTypes.string,
         isCorrect: PropTypes.bool,
+        wasSelected: PropTypes.bool,
     })),
     isGameStarted: PropTypes.bool,
     isGameFinished: PropTypes.bool,

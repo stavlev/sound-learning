@@ -1,5 +1,5 @@
 import {Typography, Paper} from 'material-ui';
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {compose} from 'recompose';
@@ -14,8 +14,10 @@ export class GettingToKnow extends React.Component {
 
     render() {
 
-        const {subjectHeader, subjectText, chooseSubject, match,
-               authUser, onSetdbUser, updateLevels} = this.props;
+        const {
+            subjectHeader, subjectText, subjectImage, chooseSubject, match,
+            authUser, onSetdbUser, updateLevels
+        } = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
         chooseSubject(match.url);
@@ -23,13 +25,18 @@ export class GettingToKnow extends React.Component {
         return (
             <div className="getting-to-know-container">
                 <Paper className="getting-to-know-paper">
-                    <Typography type="display2">
-                        {subjectHeader}
-                    </Typography>
-                    <br/><br/>
-                    <Typography type="title">
-                        {subjectText}
-                    </Typography>
+                    <div className="getting-to-know-content">
+                        <div className="getting-to-know-text">
+                            <Typography type="display2">
+                                {subjectHeader}
+                            </Typography>
+                            <br/><br/>
+                            <Typography type="title">
+                                {subjectText}
+                            </Typography>
+                        </div>
+                        <img src={subjectImage} className="getting-to-know-image"/>
+                    </div>
                     <div>
                         <Typography type="title"
                                     onClick={() => nextLevel(authUser, onSetdbUser, updateLevels, match)}
@@ -51,6 +58,7 @@ function mapStateToProps(state) {
     return {
         subjectHeader: state.gettingToKnow.subjectHeader,
         subjectText: state.gettingToKnow.subjectText,
+        subjectImage: state.gettingToKnow.subjectImage,
         authUser: state.sessionState.authUser
     };
 }

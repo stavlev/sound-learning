@@ -54,11 +54,22 @@ export default function sortGameReducer(state = initialState, action) {
             let tmposcillatorNode;
             let gainNode = null;
             let isLoudness = 0;
+            let isWaveLength = 0;
+            let currTime = 0;
 
             oscillatorNode.type = 'sine';
 
             if (action.level === 2) {
                 oscillatorNode.frequency.setValueAtTime(440, state.audioCtx.currentTime);
+            }
+            else if (action.level === 4){
+                currTime = state.audioCtx.currentTime;
+                oscillatorNode.frequency.setValueAtTime(2000, currTime);
+                for (let i = 1; i <= 100; i = i + 2) {
+                    oscillatorNode.frequency.linearRampToValueAtTime(100, currTime + (action.frequency * i));
+                    oscillatorNode.frequency.linearRampToValueAtTime(2000, currTime + (action.frequency * i) + 1);
+                }
+                isWaveLength = 1;
             }
             else {
                 oscillatorNode.frequency.setValueAtTime(action.frequency * 100 + 140, state.audioCtx.currentTime);
@@ -76,6 +87,9 @@ export default function sortGameReducer(state = initialState, action) {
                 tmposcillatorNode = oscillatorNode;
                 oscillatorNode = gainNode;
                 tmposcillatorNode.start();
+            }
+            else if (isWaveLength === 1){
+                oscillatorNode.start();
             }
             else{
                 oscillatorNode.start();

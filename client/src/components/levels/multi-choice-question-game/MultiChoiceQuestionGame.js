@@ -33,7 +33,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                 break;
             }
             case 3: {
-                textLevel = text.QUESTION_ONE.question.text;
+                textLevel = text.QUESTION_THREE.question.text;
                 break;
             }
             case 4: {
@@ -41,7 +41,7 @@ export class MultiChoiceQuestionGame extends React.Component {
                 break;
             }
             case 5: {
-                textLevel = text.QUESTION_ONE.question.text;
+                textLevel = text.QUESTION_FIVE.question.text;
                 break;
             }
         }

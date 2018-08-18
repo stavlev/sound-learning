@@ -2,7 +2,7 @@ import * as ActionTypes from './actionTypes';
 import shuffle from "shuffle-array";
 import uuidV4 from 'uuid/v4';
 import {detectLevel} from "../../../helper_functions/levelDetector";
-import {QUESTION_FOUR, QUESTION_ONE, QUESTION_TWO} from "../../../constants/questionsAnswers";
+import {QUESTION_FOUR, QUESTION_ONE, QUESTION_TWO, QUESTION_FIVE, QUESTION_THREE} from "../../../constants/questionsAnswers";
 
 const initialState = {
     /*audioCtx: new (window.AudioContext || window.webkitAudioContext)(),*/
@@ -36,9 +36,19 @@ export default function multiChoiceGameReducer(state = initialState, action) {
                     answersTmp = QUESTION_TWO.answers;
                     break;
                 }
+                case 3: {
+                    questionTmp = QUESTION_THREE.question;
+                    answersTmp = QUESTION_THREE.answers;
+                    break;
+                }
                 case 4: {
                     questionTmp = QUESTION_FOUR.question;
                     answersTmp = QUESTION_FOUR.answers;
+                    break;
+                }
+                case 5: {
+                    questionTmp = QUESTION_FIVE.question;
+                    answersTmp = QUESTION_FIVE.answers;
                     break;
                 }
                 default: {

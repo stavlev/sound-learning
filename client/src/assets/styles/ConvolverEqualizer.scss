@@ -1,0 +1,60 @@
+.convolver-equalizer-container {
+  height: 100%;
+  display: flex;
+
+  .convolver-equalizer-paper{
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+
+    .convolver-equalizer-game {
+      padding: 20px;
+      margin-top: 40px;
+      text-align: center;
+      border: dashed lightgrey 1px;
+
+      .dest-freq-container {
+        display: inline-flex;
+
+        .play-dest-button {
+          border-radius: 0;
+          margin-left: 15px;
+        }
+
+        p {
+          align-self: center;
+        }
+      }
+
+      .equalizer-container {
+        .equalizer-title {
+          display: inline-flex;
+
+          p {
+            align-self: center;
+          }
+
+          .play-knob-button {
+            border-radius: 0;
+            margin-left: 15px;
+          }
+        }
+
+        .equalizer-content {
+          display: flex;
+          justify-content: center;
+
+          .slider-container, .knob-container {
+            margin: 15px;
+          }
+        }
+
+        .check {
+          width: 100%;
+          margin: 0 auto;
+          margin-top: 15px !important;
+        }
+      }
+    }
+  }
+}

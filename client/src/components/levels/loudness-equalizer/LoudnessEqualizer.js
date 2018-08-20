@@ -133,6 +133,7 @@ export class LoudnessEqualizer extends React.Component {
                                                 step={10}
                                                 value={knobStartFrequency}
                                                 onChange={(v) => equalizerOscillatorNode.frequency.value = v}
+                                                knobId="loudness-frequency"
                                             />
 
                                         </div>

@@ -6,7 +6,8 @@ export default class Knob extends React.Component {
     componentDidMount() {
         const {onChange, min, max, step, value, size, interaction, mode} = this.props;
 
-        this.dial = new Nexus.Dial('#dial',{
+        const idString = "#dial " + this.props.knobId;
+        this.dial = new Nexus.Dial(idString,{
             min: min,
             max: max,
             step: step,
@@ -26,8 +27,9 @@ export default class Knob extends React.Component {
     }
 
     render() {
+
         return (
-            <div id="dial" />
+            <div id={"dial " + this.props.knobId} />
         );
     }
 }
@@ -44,6 +46,7 @@ Knob.propTypes = {
     max: PropTypes.number.isRequired,
     step: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
+    knobId: PropTypes.string.isRequired,
     size: PropTypes.arrayOf(PropTypes.number),
     interaction: PropTypes.string,
     mode: PropTypes.string

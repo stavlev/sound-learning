@@ -8,6 +8,7 @@ import gettingToKnowReducer from '../components/getting-to-know/gettingToKnowRed
 import progressSideBarReducer from "../components/layout/progressSideBarReducer";
 import pitchEqualizerReducer from "../components/levels/pitch-equalizer/reducer";
 import loudnessEqualizerReducer from "../components/levels/loudness-equalizer/reducer";
+import convolverEqualizerReducer from "../components/levels/convolver-equalizer/reducer";
 
 const rootReducer = combineReducers({
     main: mainReducer,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     memoryGame: memoryGameReducer,
     progressSideBar: progressSideBarReducer,
     pitchEqualizer: pitchEqualizerReducer,
-    loudnessEqualizer: loudnessEqualizerReducer
+    loudnessEqualizer: loudnessEqualizerReducer,
+    convolverEqualizer: convolverEqualizerReducer
 });
 
 export default rootReducer;

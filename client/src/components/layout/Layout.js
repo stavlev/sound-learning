@@ -18,6 +18,7 @@ import GettingToKnow from "../getting-to-know/GettingToKnow";
 import HomePage from "../home-page/HomePage";
 import * as cache from "../oscillator/impulseCache";
 import LoudnessEqualizer from "../levels/loudness-equalizer/LoudnessEqualizer";
+import ConvolverEqualizer from "../levels/convolver-equalizer/ConvolverEqualizer";
 
 class Layout extends React.Component {
     constructor(props) {
@@ -69,7 +70,7 @@ class Layout extends React.Component {
                                     <Route path={routes.CONVOLVER_SORT_GAME} component={PitchSortGame}/>
                                     <Route path={routes.CONVOLVER_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                                     <Route path={routes.CONVOLVER_MEMORY_GAME} component={MemoryGame}/>
-                                    <Route path={routes.CONVOLVER_EQUALIZER} component={MemoryGame}/>
+                                    <Route path={routes.CONVOLVER_EQUALIZER} component={ConvolverEqualizer}/>
 
                                     <Route path={routes.WAVELENGTH_GETTING_TO_KNOW} component={GettingToKnow}/>
                                     <Route path={routes.WAVELENGTH_SORT_GAME} component={PitchSortGame}/>

@@ -124,6 +124,7 @@ export class PitchEqualizer extends React.Component {
                                                 step={10}
                                                 value={knobStartFrequency}
                                                 onChange={(v) => knobOscillatorNode.frequency.value = v}
+                                                knobId="pitch"
                                             />
                                         </div>
                                         <Button

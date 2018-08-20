@@ -1,5 +1,4 @@
 import * as ActionTypes from "./actionTypes";
-import * as routes from "../../constants/routes";
 import {LEVELS} from "../../constants/levels";
 
 const INITIAL_STATE = {

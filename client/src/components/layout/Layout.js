@@ -76,13 +76,13 @@ class Layout extends React.Component {
                                     <Route path={routes.WAVELENGTH_SORT_GAME} component={PitchSortGame}/>
                                     <Route path={routes.WAVELENGTH_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                                     <Route path={routes.WAVELENGTH_MEMORY_GAME} component={MemoryGame}/>
-                                    <Route path={routes.WAVELENGTH_EQUALIZER} component={MemoryGame}/>
+                                    <Route path={routes.WAVELENGTH_EQUALIZER} component={ConvolverEqualizer}/>
 
                                     <Route path={routes.WAVE_SHAPE_GETTING_TO_KNOW} component={GettingToKnow}/>
                                     <Route path={routes.WAVE_SHAPE_SORT_GAME} component={PitchSortGame}/>
                                     <Route path={routes.WAVE_SHAPE_MULTI_CHOICE_GAME} component={MultiChoiceQuestionGame}/>
                                     <Route path={routes.WAVE_SHAPE_MEMORY_GAME} component={MemoryGame}/>
-                                    <Route path={routes.WAVE_SHAPE_EQUALIZER} component={MemoryGame}/>
+                                    <Route path={routes.WAVE_SHAPE_EQUALIZER} component={ConvolverEqualizer}/>
                                 </div>
                             </div>
                     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Typography, Paper, Radio, RadioGroup, FormControlLabel} from 'material-ui';
-import {startMultiChoiceGame, onAnswerClick} from "./actionCreators";
+import {startMultiChoiceGame, onAnswerClick, updateLevels, onSetdbUser} from "./actionCreators";
 import {connect} from "react-redux";
 import {compose} from 'recompose';
 import {Link, withRouter} from "react-router-dom";
@@ -16,7 +16,7 @@ export class MultiChoiceQuestionGame extends React.Component {
     render() {
         const {
             dispatch, answers, isGameStarted, isGameFinished,
-            match, authUser, onSetdbUser, updateLevels
+            match, authUser
         } = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);

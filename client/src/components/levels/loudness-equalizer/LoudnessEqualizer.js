@@ -10,7 +10,9 @@ import {startGame,
         setEqualizerOscillatorNode,
         onDestButtonClick,
         onEqualizerButtonClick,
-        onTryAgain
+        onTryAgain,
+        updateLevels,
+        onSetdbUser,
 } from "./actionCreators";
 import Snackbar from "material-ui/es/Snackbar/Snackbar";
 import {compose} from 'recompose';
@@ -31,7 +33,7 @@ export class LoudnessEqualizer extends React.Component {
     render() {
         const {dispatch, audioCtx, knobStartFrequency, destFrequency, destVolume, isGameStarted, sliderStartVolume,
                isGameFinished, equalizerOscillatorNode, destOscillatorNode, isDestPlaying, isEqualizerPlaying,
-               isTryAgain, match, authUser, onSetdbUser, updateLevels, destGainNode, equalizerGainNode} = this.props;
+               isTryAgain, match, authUser, destGainNode, equalizerGainNode} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
 

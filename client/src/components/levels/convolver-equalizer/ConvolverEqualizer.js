@@ -10,7 +10,9 @@ import {startGame,
     setEqualizerOscillatorNode,
     onDestButtonClick,
     onEqualizerButtonClick,
-    onTryAgain
+    onTryAgain,
+    updateLevels,
+    onSetdbUser,
 } from "./actionCreators";
 import Snackbar from "material-ui/es/Snackbar/Snackbar";
 import {compose} from 'recompose';
@@ -32,7 +34,7 @@ export class ConvolverEqualizer extends React.Component {
     render() {
         const {dispatch, audioCtx, knobStartFrequency, destFrequency, destVolume, destConvolver, isGameStarted, sliderStartVolume,
             isGameFinished, equalizerOscillatorNode, destOscillatorNode, isDestPlaying, isEqualizerPlaying,
-            isTryAgain, match, authUser, onSetdbUser, updateLevels,
+            isTryAgain, match, authUser,
             destGainNode, equalizerGainNode, destConvolverNode, equalizerConvolverNode, knobStartConvolver} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);

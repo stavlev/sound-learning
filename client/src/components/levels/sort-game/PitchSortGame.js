@@ -6,7 +6,9 @@ import {arrayMove, SortableContainer, SortableElement} from 'react-sortable-hoc'
 import {Typography, Paper} from 'material-ui';
 import {startSortGame,
         onSortEnd,
-        finishSortGame} from "./actionCreators";
+        finishSortGame,
+        updateLevels,
+        onSetdbUser} from "./actionCreators";
 import {Link, withRouter} from "react-router-dom";
 import {getNextLevelRoute, nextLevel, detectLevel} from "../../../helper_functions/levelDetector";
 import {compose} from "recompose";
@@ -53,7 +55,7 @@ export class PitchSortGame extends React.Component {
 
     render() {
         const {dispatch, audioCtx, frequencies, isGameStarted, isGameFinished,
-               match, authUser, onSetdbUser, updateLevels} = this.props;
+               match, authUser} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
         let nextLevelSubLevelNum = detectLevel(match.url);

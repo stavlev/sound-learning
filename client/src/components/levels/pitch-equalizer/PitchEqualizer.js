@@ -10,7 +10,9 @@ import {startGame,
         setKnobOscillatorNode,
         onDestButtonClick,
         onKnobButtonClick,
-        onTryAgain
+        onTryAgain,
+        updateLevels,
+        onSetdbUser,
 } from "./actionCreators";
 import Snackbar from "material-ui/es/Snackbar/Snackbar";
 import {compose} from 'recompose';
@@ -30,7 +32,7 @@ export class PitchEqualizer extends React.Component {
     render() {
         const {dispatch, audioCtx, knobStartFrequency, destFrequency, isGameStarted,
                isGameFinished, knobOscillatorNode, destOscillatorNode, isDestPlaying, isKnobPlaying,
-               isTryAgain, match, authUser, onSetdbUser, updateLevels} = this.props;
+               isTryAgain, match, authUser} = this.props;
 
         let nextLevelRoute = getNextLevelRoute(match.url);
 

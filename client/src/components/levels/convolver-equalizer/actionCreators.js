@@ -49,3 +49,17 @@ export const setEqualizerOscillatorNode = (frequency, gain, convolver) => {
         knobConvolver: convolver
     };
 };
+export const updateLevels = (level, subLevel) => {
+    return {
+        type: ActionTypes.UPDATE_LEVELS,
+        level: level,
+        subLevel: subLevel
+    };
+};
+
+export const onSetdbUser = (dbUser) => {
+    return {
+        type: ActionTypes.DB_USER_SET,
+        dbUser: dbUser
+    };
+};

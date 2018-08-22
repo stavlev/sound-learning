@@ -15,6 +15,21 @@ export const onAnswerClick = id => {
     };
 };
 
+export const updateLevels = (level, subLevel) => {
+    return {
+        type: ActionTypes.UPDATE_LEVELS,
+        level: level,
+        subLevel: subLevel
+    };
+};
+
+export const onSetdbUser = (dbUser) => {
+    return {
+        type: ActionTypes.DB_USER_SET,
+        dbUser: dbUser
+    };
+};
+
 /*export const setDefaultOscillatorNode = (id, frequency) => {
     return {
         type: ActionTypes.SET_DEFAULT_OSCILLATOR_NODE,

@@ -71,6 +71,7 @@
     }
 
     .progress-side-bar-container {
+      overflow: auto;
       border-right: 1px solid lightgrey;
       position: relative;
       width: 20%;
